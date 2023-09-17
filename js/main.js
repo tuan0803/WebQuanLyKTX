@@ -12,6 +12,7 @@ const open_notifi=document.querySelector(".sub-notifis")
 const message=document.querySelector(".message-box")
 const open_message=document.querySelector(".message-menus")
 
+
 dropdown.forEach((element) => {
   const height = element.offsetHeight;
   element.style.marginTop = `${-height}px`;
@@ -32,17 +33,32 @@ links.forEach((link) => {
     ele.classList.toggle("dropdown");
   });
 });
+
+overlay.addEventListener('click',()=>{
+  menuButton.classList.toggle("open-icon");
+  menu.classList.toggle("turn_on");
+  overlay.classList.toggle("show");
+  logo.classList.toggle("turn_off");
+
+})
 menu_icon.addEventListener('click', ()=>{
   menuButton.classList.toggle("open-icon");
   menu.classList.toggle("turn_on");
   logo.classList.toggle("turn_off");
+  overlay.classList.toggle("show")
 });
 users.addEventListener('click', ()=>{
    submenu.classList.toggle("open");
+   open_notifi.classList.remove("open_notifi");
+   open_message.classList.remove("open_message");
 });
 notifi.addEventListener('click', ()=>{
   open_notifi.classList.toggle("open_notifi");
+  submenu.classList.remove("open");
+  open_message.classList.remove("open_message");
 });
 message.addEventListener('click', ()=>{
   open_message.classList.toggle("open_message");
+  submenu.classList.remove("open");
+  open_notifi.classList.remove("open_notifi");
 });
