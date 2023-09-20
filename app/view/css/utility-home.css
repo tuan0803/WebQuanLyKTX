@@ -1,0 +1,50 @@
+/* Đã có đoạn mã CSS cho header và banner ở trên */
+
+.utilities {
+     display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+.utilities h2{
+    text-align: center;
+    margin-bottom: 76px;
+    font-size: 32px;
+    
+}
+
+.utility-item {
+     display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.utility-item img {
+    width: 30px; /* Điều chỉnh kích thước của icon */
+    height: 30px; /* Điều chỉnh kích thước của icon */
+    margin-right: 10px;
+}
+
+.utility-name {
+    font-size: 18px;
+}
+
+.utility-dropdown {
+     display: none; 
+    width: 200px;
+    background-color: #2d2b2b;
+    border: 1px solid #ccc;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+.utility-dropdown.show {
+    display: block;
+
+}
+
+.utility-item:hover .utility-dropdown {
+    display: block;
+}

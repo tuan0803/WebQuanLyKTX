@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding:  0 ;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+}
+#siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    z-index: 3; 
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.content {
+    padding: 20px;
+}
+
+
+
+.banner {
+    text-align: center;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #333;
+    color: white;
+}
+
+.banner-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    transition: color 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* Để đảm bảo nút nằm trên hình ảnh */
+}
+
+.prev-button {
+    left: 10px;
+    color: #333;
+}
+
+.next-button {
+    right: 10px;
+    color: #333;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+#bannerImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#bannerTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+.ht-section-title {
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 36px;
+    width: 60%;
+    margin: 0 auto 15px;
+}
+
+
