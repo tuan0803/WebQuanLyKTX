@@ -1,0 +1,57 @@
+/* Đã có đoạn mã CSS cho header và banner ở trên */
+
+.banner {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+
+.banner-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    transition: color 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.banner-button:hover {
+    color: #555;
+}
+
+.banner-content {
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+#bannerImage {
+    max-width: 100%;
+    height: auto;
+}
+
+#bannerTitle {
+    margin-top: 10px;
+    font-size: 24px;
+}
+.banner-Logo{
+    margin-top: 10px;
+    font-size: 24px;
+}

@@ -18,14 +18,14 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <link rel="stylesheet" href="../../css/index.css">
-        <title>Nhân Viên</title>
+        <link  rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/admin/css/index.css">
+        <title>Admin</title>
     </head>
     <body>
         <header>
             <div class="wrapper">
                 <div class="content">
-                    <img src="../../image/logo-utt-border.png" alt="Logo trường">
+                    <img src="../image/logo-utt-border.png" alt="Logo trường">
                 </div>
                 <div class="sidebar">
                     <ul class="navbar">
@@ -190,7 +190,7 @@
         </header>
         <div class="topnav">
             <div class="logo-nav">
-                <img src="../../image/logo-utt-border.png" alt>
+                <img src="../image/logo-utt-border.png" alt>
             </div>
             <div class="navbar__icons">
                 <div class="navbar__icon"></div>
@@ -204,7 +204,7 @@
                     <i class='bx bxl-messenger'></i>
                 </div>
                 <div class="user-info">
-                    <img src="../../image/employee-icon-png.png" alt="Logo-icon">
+                    <img src="../image/employee-icon-png.png" alt="Logo-icon">
                 </div>
             </div>
             <!-- info-menu-user -->
@@ -348,5 +348,5 @@
             <span>nhóm Web</span>
         </footer>
     </body>
-    <script src="../../js/main.js"></script>
+    <script src="<?php echo _WEB_ROOT?>/public/assets/admin/js/main.js"></script>
 </html>

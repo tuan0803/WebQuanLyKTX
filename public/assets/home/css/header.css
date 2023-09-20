@@ -6,24 +6,18 @@
 }
 header{
     position: relative;
-    background: url(../image/banner.png) no-repeat; 
+    /* background: url(../image/banner.png) no-repeat;  */
     height: 100vh;
     background-size: cover;
     background-position: center;
 }
 .banner{
-    background: url(../image/banner.png) no-repeat;
+    /* background: url(../image/banner.png) no-repeat; */
     min-height: 480px;
     width: 100px;
 
 }
-header::backdrop{
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0);
-}
+
 nav{
     position: fixed;
     width: 100%;
@@ -106,4 +100,55 @@ nav .menu{
     background: rgb(79, 79, 77);
     color: #fff;
 
+}
+.banner {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+
+.banner-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    transition: color 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.banner-button:hover {
+    color: #555;
+}
+
+.banner-content {
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+#bannerImage {
+    max-width: 100%;
+    height: auto;
+}
+
+#bannerTitle {
+    margin-top: 10px;
+    font-size: 24px;
 }
