@@ -18,7 +18,11 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
+<<<<<<< HEAD
         <link  rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/admin/css/index.css">
+=======
+        <link  rel="stylesheet" href="http://localhost:3232/public/assets/admin/css/index.css">
+>>>>>>> 42c53fa2b70b69bf36d268b79a6802b0822fec02
         <title>Admin</title>
     </head>
     <body>
@@ -348,5 +352,9 @@
             <span>nhóm Web</span>
         </footer>
     </body>
+<<<<<<< HEAD
     <script src="<?php echo _WEB_ROOT?>/public/assets/admin/js/main.js"></script>
+=======
+    <script src="../../../js/main.js"></script>
+>>>>>>> 42c53fa2b70b69bf36d268b79a6802b0822fec02
 </html>
