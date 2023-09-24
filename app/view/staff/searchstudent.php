@@ -15,13 +15,11 @@ if(isset($_POST['buttonTim'])){
 <head>
   <meta charset="UTF-8" />
   <title>Tra cứu</title>
-  <link rel="stylesheet" href="../../css/index.css" />
+  <link rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/staff/css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
-    <?php
-        include_once './dashboard_NV.php';
-    ?>
+    
      <form style="padding-top: 150px; padding-left:200px;" method="post" action="">
      <table style="padding-left: 400px">
             <tr>

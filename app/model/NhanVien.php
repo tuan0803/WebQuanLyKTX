@@ -1,24 +1,25 @@
 <?php
-class HomeModel extends Model{
+class NhanVien extends Model{
+    
     function __construct(){
         parent::__construct();
     }
     function tableFill(){
-        return " ";
+        
+        return "staff";
     }
     function fieldFill(){
-        return " ";
+        return "*";
     }
     function primaryKey(){
-        return " ";
+        return "id";
     }
-    public function getListNotif(){
-        return [
-            'item1',
-            'item2',
-            'item3'
-        ];
+    public function deletenv($id){
+        $condition = "id = $id";
+        $table     = $this->tableFill();
+        $this->deleteData($table, $condition);
     }
+    
     public function getDetail($id){
         $data = [
             'item1',

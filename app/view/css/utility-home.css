@@ -1,6 +1,9 @@
-/* Đã có đoạn mã CSS cho header và banner ở trên */
 
 .utilities {
+    padding-top: 116px;
+    padding-bottom: 78px;
+    padding-left: 134px;
+    padding-right: 134px;
      display: flex; 
     flex-direction: column;
     align-items: center;

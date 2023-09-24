@@ -1,27 +1,14 @@
-<?php
-$con=mysqli_connect('localhost', 'root','','qlkytuc')
-or die('Lỗi kết nối');  
-$sql="SELECT * FROM  student WHERE id like '%$id%'";
-$data=mysqli_query($con,$sql);
-if(isset($_POST['buttonTim'])){
-    $id=$_POST['txtid'];
-    $name=$_POST['txtname'];
-    $sqltk="SELECT * FROM student WHERE id like '%$id%'";
-    $data=mysqli_query($con,$sqltk);
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Danh sách sinh viên</title>
-  <link rel="stylesheet" href="../../css/index.css" />
+  <link rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/staff/css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
-    <?php
-        include_once './dashboard_NV.php';
-    ?>
+    
      <form style="padding-top: 150px; padding-left:200px;" method="post" action="">
      <table style="padding-left: 400px">
      <h2 style="padding-left: 350px;">Danh sách sinh viên</h2>
@@ -45,28 +32,36 @@ if(isset($_POST['buttonTim'])){
                 <th>Mã hợp đồng</th>
             </tr>
             <?php
-                if(isset($data)&& $data!=null)
-                {
-                    $i=1;
-                    while($row=mysqli_fetch_array($data)){
+            foreach ($list as $list1) {
+                $id       = $list1['id'] ?? '';
+                $name     = $list1['name'] ?? '';
                 
-            ?>
-            <tr>
-                <td><?php echo $i++ ?></td>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row['name'] ?></td>
-                <td><?php echo $row['gender'] ?></td>
-                <td><?php echo $row['phone'] ?></td>
-                <td><?php echo $row['address'] ?></td>
-                <td><?php echo $row['cccd'] ?></td>
-                <td><?php echo $row['class'] ?></td>
-                <td><?php echo $row['room-id'] ?></td>
-                <td><?php echo $row['bed-id'] ?></td>
-                <td><?php echo $row['contract-id'] ?></td>
-            </tr>
-            <?php
+                $gender   = $list1['gender'] ?? '';
+                $phone    = $list1['phone'] ?? '';
+                $address  = $list1['address'] ?? '';
+                $cccd   = $list1['cccd'] ?? '';
+                $class    = $list1['class'] ?? '';
+                $roomid = $list1['roomid'] ?? '';
+                $bedid = $list1['bedid'] ?? '';
+                $contractid = $list1['contractid'] ?? '';
+                
+
+
+                echo "<tr>";
+                echo "<td>" . "<p>$id</p>" . "</td>";
+                echo "<td>" . "<p>$name</p>" . "</td>";
+                
+                echo "<td>" . "<p>$gender</p>" . "</td>";
+                echo "<td>" . "<p>$phone</p>" . "</td>";
+                echo "<td>" . "<p>$address</p>" . "</td>";
+                echo "<td>" . "<p>$cccd</p>" . "</td>";
+                echo "<td>" . "<p>$class </p>" . "</td>";
+                echo "<td>" . "<p>$roomid </p>" . "</td>";
+                echo "<td>" . "<p>$bedid </p>" . "</td>";
+                echo "<td>" . "<p>$contractid </p>" . "</td>";
+                echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlysinhvien/showformsua/" . $id . "'>Sửa</a></td>";
+                echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlysinhvien/deletesv/" . $id . "'>Xóa</a></td>";
             }
-        }
             ?>
         </table>
     </form>

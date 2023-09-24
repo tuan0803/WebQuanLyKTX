@@ -1,14 +1,14 @@
 const banners = [
     {
-        imageSrc: '<?php echo _WEB_ROOT?>/public/assets/home/images/football.jpg',
+        imageSrc: 'http://localhost/WebQuanLyKTX/public/assets/home/images/football.jpg',
         title: "KÝ TÚC XÁ UTT \n Nơi tình yêu bắt đầu"
     },
     {
-        imageSrc: '<?php echo _WEB_ROOT?>/public/assets/home/images/a1.jpg',
+        imageSrc: 'http://localhost/WebQuanLyKTX/public/assets/home/images/a1.jpg',
         title: "KÝ TÚC XÁ UTT \n An ninh - vệ sinh tốt"
     },
     {
-        imageSrc: '<?php echo _WEB_ROOT?>/public/assets/home/images/a3.jpg',
+        imageSrc: 'http://localhost/WebQuanLyKTX/public/assets/home/images/a3.jpg',
         title: "KÝ TÚC XÁ UTT \n Chắp cánh ước mơ"
     }
 ];

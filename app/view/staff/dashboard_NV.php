@@ -18,14 +18,14 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <link rel="stylesheet" href="../../css/index.css">
+        <link rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/staff/css/index.css">
         <title>Nhân Viên</title>
     </head>
     <body>
         <header>
             <div class="wrapper">
                 <div class="content">
-                    <img src="../../image/logo-utt-border.png" alt="Logo trường">
+                    <img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-utt-border.png" alt="Logo trường">
                 </div>
                 <div class="sidebar">
                     <ul class="navbar">
@@ -202,7 +202,7 @@
         </header>
         <div class="topnav">
             <div class="logo-nav">
-                <img src="../../image/logo-utt-border.png" alt>
+                <img src="<?php echo _WEB_ROOT?>/public/assets/staff/image/logo-utt-border.png" alt>
             </div>
             <div class="navbar__icons">
                 <div class="navbar__icon"></div>
@@ -216,7 +216,7 @@
                     <i class='bx bxl-messenger'></i>
                 </div>
                 <div class="user-info">
-                    <img src="../../image/employee-icon-png.png" alt="Logo-icon">
+                    <img src="<?php echo _WEB_ROOT?>/public/assets/staff/image/employee-icon-png.png" alt="Logo-icon">
                 </div>
             </div>
             <!-- info-menu-user -->
@@ -266,35 +266,35 @@
                 </div>
                 <div class="body-notifi">
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Chào mừng bạn đến với nhóm web</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Chào mừng bạn đến với nhóm web</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Chào mừng bạn đến với nhóm web</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Chào mừng bạn đến với nhóm web</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Chào mừng bạn đến với nhóm web</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
@@ -316,35 +316,35 @@
                 </div>
                 <div class="body-message-menu">
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Nguyễn Hoàng Việt</h5></span>
                             <span><h6>Chào bạn</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Đoàn Đức Tùng</h5></span>
                             <span><h6>Chào bạn</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Ngọc Trinh</h5></span>
                             <span><h6>làm quen</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Người lạ</h5></span>
                             <span><h6>Chào bạn</h6></span>
                         </li>
                     </ul>
                     <ul>
-                        <li><img src="../../image/logo-user-sv.png" alt="ảnh sv"></li>
+                        <li><img src="<?php echo _WEB_ROOT?>/public/assets/staff/images/logo-user-sv.png" alt="ảnh sv"></li>
                         <li>
                             <span><h5>Người lạ</h5></span>
                             <span><h6>Hãy trả lời thắc mắc</h6></span>
@@ -354,5 +354,5 @@
             </div>
         </div>
     </body>
-    <script src="../../js/main.js"></script>
+    <script src="<?php echo _WEB_ROOT?>/public/assets/staff/js/main.js"></script>
 </html>

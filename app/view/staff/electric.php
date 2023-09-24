@@ -9,7 +9,7 @@ $data=mysqli_query($con,$sql);
 <head>
   <meta charset="UTF-8" />
   <title>Tiền điện</title>
-  <link rel="stylesheet" href="../../css/index.css" />
+  <link rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/staff/css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
