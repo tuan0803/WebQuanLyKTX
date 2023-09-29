@@ -158,14 +158,14 @@
                                     <li>
                                         <span class="title">
                                             <i class='fa fa-lightbulb-o'></i>
-                                            <a style="color:black;" href="./electric.php"><span>Cập nhật số điện</span></a>
+                                            <a style="color:black;" href="<?php echo _WEB_ROOT?>/qlyservicebill/listservicebill"><span>Danh sách hóa đơn</span></a>
                                         </span>
                                     </li>
 
                                     <li>
                                         <span class="title">
                                             <i class="fa fa-tint"></i>
-                                            <a style="color:black;" href="./water.php"><span>Cập nhật số nước</span></a>
+                                            <a style="color:black;" href="./water.php"><span>Thêm hóa đơn</span></a>
                                         </span>
                                     </li>
                                     <li>

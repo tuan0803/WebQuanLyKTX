@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    margin: 0;
+}
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 66.67%; /* 2/3 của trang */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.error-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.error-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+.error-form input[type="text"], .error-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.error-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.error-form button:hover {
+    background-color: #0056b3;
+}

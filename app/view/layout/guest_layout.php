@@ -22,7 +22,7 @@
                 <li><a href="#">TRANG CHỦ</a></li>
                 <li><a href="#">GIỚI THIỆU</a></li>
                 <li><a href="#">THÔNG BÁO</a></li>
-                <li><a href="<?php echo _WEB_ROOT?>/login">ĐĂNG NHẬP</a></li>
+                <li><a href="<?php echo _WEB_ROOT?>/login/index">ĐĂNG NHẬP</a></li>
             </ul>
         </nav>
     </header>

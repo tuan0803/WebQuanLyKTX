@@ -1,74 +1,91 @@
-<?php
-$con=mysqli_connect('localhost', 'root','','qlkytuc')
-or die('Lỗi kết nối');  
-$sql="SELECT * FROM servicebill";
-$data=mysqli_query($con,$sql);
-if(isset($_POST['buttonTim'])){
-    $id=$_POST['txtid'];
-    $name=$_POST['txtname'];
-    $sqltk="SELECT * FROM servicebill WHERE id like '%$id%'";
-    $data=mysqli_query($con,$sqltk);
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Tiền sinh hoạt</title>
+  <title>Phí dịch vụ</title>
   <link rel="stylesheet" href="<?php echo _WEB_ROOT?>/public/assets/staff/css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
-    <?php
-        include_once './dashboard_NV.php';
-    ?>
-     <form style="padding-top: 150px; padding-left:200px;" method="post" action="">
+    
+     <form style="padding-top: 150px; padding-left:50px;" method="post" action="">
      <table style="padding-left: 400px">
             <tr>
-                <td colspan="2" style="padding-left: 350px;"><h2>Phí sinh hoạt chung</h2></td>
+                <td colspan="2" style="padding-left: 370px;"><h2>Phí dịch vụ</h2></td>
             </tr>
             <tr>
             <td>
-            <button style="background-color:   rgb(128,218,235); color:white;"><a style="background-color:   rgb(128,218,235); color:white;" href="./updateservicecost.php">Cập nhật</a></button>
+            <button style="background-color:   rgb(128,218,235); color:white;"><a style="background-color:   rgb(128,218,235); color:white;" href="./updateservice.php">Cập nhật</a></button>
             <button style="background-color:   rgb(128,218,235); color:white;" name="buttonTim">Tìm kiếm</button></td>
-            <td><input style="border-radius: 5px;" type="text" name="txtid" placeholder="Hãy nhập thông tin"></td>
-            <td><button style="background-color:   rgb(128,218,235); color:white;"><a style="background-color:   rgb(128,218,235); color:white;" href="./allservicecost.php">Tổng tiền dịch vụ</a></button>
-            <button style="background-color:   rgb(128,218,235); color:white;" name="buttonTim"><a style="background-color:   rgb(128,218,235); color:white;" href="./servicecost.php">Quay lại</a></button></td>
+            <td><input style="border-radius: 10px;" type="text" name="txtid" placeholder="Hãy nhập mã hóa đơn"></td>
+            <td><button style="background-color:   rgb(128,218,235); color:white;" name="buttonTim"><a style="background-color:   rgb(128,218,235); color:white;" href="./servicecost.php">Quay lại</a></button></td>
             </tr>
       </table>
-        <table  border=1 width=80% style="border: 1px solid #000; padding-left: 320px; padding-top:300px;">
+        <table  border=1 width=150% style="border: 1px solid #000; padding-left: 320px; padding-top:300px;">
         <tr style="background: rgb(65,74,76); color:aliceblue;">
                 <th>STT</th>
-                <th>Mã sinh viên</th>
+                <th>Mã hóa đơn</th>
                 <th>Mã phòng</th>
                 <th>Thời hạn</th>
-                <th>Tiền Wifi</th>
+                <th>Số điện cũ</th>
+                <th>Số điện mới</th>
+                <th>Số nước cũ</th>
+                <th>Số nước mới</th>
+                <th>Số điện đã dùng</th>
+                <th>Số nước đã dùng</th>
+                <th>Tiền điện</th>
+                <th>Tiền nước</th>
+                <th>Tiền mạng</th>
                 <th>Tiền vệ sinh</th>
+                <th>Tổng tiền</th>
+                <th>Mỗi cá nhân</th>
                 <th>Thao tác</th>
             </tr>
+            
             <?php
-                if(isset($data)&& $data!=null)
-                {
-                    $i=1;
-                    while($row=mysqli_fetch_array($data)){
+            foreach ($list as $list1) {
+                $id       = $list1['id'] ?? '';
+                $roomid    = $list1['roomid'] ?? '';
+                $date     = $list1['date'] ?? '';
+                $electricnumold  = $list1['electricnumold'] ?? '';
+                $electricnumnew   = $list1['electricnumnew'] ?? '';
+                $waternumold  = $list1['waternumold'] ?? '';
+                $waternumnew   = $list1['waternumnew'] ?? '';
+                $totalelectric    = $list1['totalelectric'] ?? '';
+                $totalwater = $list1['totalwater'] ?? '';
+                $electriccost      = $list1['electriccost'] ?? '';
+                $watercost = $list1['watercost'] ?? '';
+                $wificost      = $list1['wificost'] ?? '';
+                $wastcost= $list1['wastcost'] ?? '';
+                $totalcost = $list1['totalcost'] ?? '';
+                $individualcost = $list1['individualcost'] ?? '';
+
+
+                echo "<tr>";
+                echo "<td>" . "<p>$id</p>" . "</td>";
+                echo "<td>" . "<p>$roomid </p>" . "</td>";
+                echo "<td>" . "<p>$date</p>" . "</td>";
+                echo "<td>" . "<p>$electricnumold </p>" . "</td>";
+                echo "<td>" . "<p>$electricnumnew</p>" . "</td>";
+                echo "<td>" . "<p>$waternumold</p>" . "</td>";
+                echo "<td>" . "<p>$waternumnew </p>" . "</td>";
+                echo "<td>" . "<p>$totalelectric </p>" . "</td>";
+                echo "<td>" . "<p>$totalwater</p>" . "</td>";
+                echo "<td>" . "<p>$electriccost </p>" . "</td>";
+                echo "<td>" . "<p>$watercost </p>" . "</td>";
+                echo "<td>" . "<p>$wificost</p>" . "</td>";
+                echo "<td>" . "<p>$wastcost</p>" . "</td>";
+                echo "<td>" . "<p>$totalcost </p>" . "</td>";
+                echo "<td>" . "<p>$individualcost</p>" . "</td>";
                 
-            ?>
-            <tr>
-                <td><?php echo $i++ ?></td>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row['room-id'] ?></td>
-                <td><?php echo $row['date'] ?></td>
-                <td><?php echo $row['wifi-cost'] ?></td>
-                <td><?php echo $row['wast-cost'] ?></td>
-                <td>
-                    <a href="./fixstudent.php?id=<?php echo $row['id']?>"><span style="background-color: rgb(252,194,0); color:white;">Sửa</span></a>
-                    <a href="./deletestudent.php?id=<?php echo $row['id']?>"><span style="background-color: rgb(165,42,42); color:white;">Xóa</span></a>
-                </td>  
-            </tr>
-            <?php
+
+                echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlyservicebill/showformsua/" . $id . "'>Sửa</a></td>";
+                echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlyservicebill/deleteservicebill/" . $id . "'>Xóa</a></td>";
             }
-        }
+                    echo "</tr>";
             ?>
+           
         </table>
     </form>
 </body>

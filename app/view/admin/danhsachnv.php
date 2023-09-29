@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h2 align = "center" >Danh Sách Nhân Viên</h2>
     <?php
         echo "<table>";
         echo "<tr><th>ID</th><th>name</th><th>Nam sinh</th><th>Gioi tinh</th><th>SĐT</th><th>Địa chỉ</th><th>Lương</th><th>Tuổi</th><th>Chức vụ</th><th colspan='2'>Lua chon</th></tr>";

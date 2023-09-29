@@ -71,7 +71,7 @@
                             <div class="navbar-link">
                                 <span class="btn-dropdown">
                                     <i class='bx bxs-school'></i>
-                                    <span>Phản ánh sự cố</span>
+                                    <span>Báo cáo sự cố</span>
                                     <i class='bx bx-chevron-down'></i>
                                 </span>
                                 <ul>
@@ -87,12 +87,7 @@
                                             <span>Báo cáo sự cố mới</span>
                                         </span>
                                     </li>
-                                    <li>
-                                        <span class="title">
-                                            <i class="fa-solid fa-hospital-user"></i>
-                                            <span>Thêm sinh viên</span>
-                                        </span>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -118,7 +113,7 @@
                             <div class="navbar-link">
                                 <span class="btn-dropdown">
                                     <i class="fa-brands fa-servicestack"></i>
-                                    <span>Dịch vụ</span>
+                                    <span>Thông báo</span>
                                     <i class='bx bx-chevron-down'></i>
                                 </span>
                                 <ul>

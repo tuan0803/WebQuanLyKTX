@@ -71,8 +71,8 @@ class Database{
         }else{
             $sql = 'DELETE FROM '.$table;
         }
-
-        $status = $this->query($sql);
+        
+         $status = $this->query($sql);
 
         if ($status){
             return true;

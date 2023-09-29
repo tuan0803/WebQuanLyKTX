@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(localhost/WebQuanLyKTX/public/assets/home/images/a1.jpg);
+    background: url(http://localhost/WEBQUANLYKTX/public/assets/home/images/a1.jpg);
     background-size: cover;
     background-position: center;
 }

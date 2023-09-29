@@ -24,6 +24,7 @@ if (!empty($configs_dir)) {
 }
 
 require_once './configs/routes.php'; //laod routes
+ require_once 'core/Session.php'; //load base session
 require_once './app/App.php'; //load app
 
 //check config and load database
@@ -37,8 +38,8 @@ if (!empty($config['database'])){
         
     }
 }
-require_once 'core/Session.php'; //load base controller
-require_once 'core/Request.php'; //load base controller
-require_once 'core/Response.php'; //load base controller
+
+require_once 'core/Request.php'; //load base request
+require_once 'core/Response.php'; //load base response
 require_once 'core/Controller.php'; //load base controller
 require_once 'core/Model.php'; //load base Model
