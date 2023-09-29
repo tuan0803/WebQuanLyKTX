@@ -2,6 +2,6 @@
 $config['database']=[
     'host'=>'localhost',
     'user'=>'root',
-    'db'=>'webquanlyktx'    
+    'db'=>'qlkytuc'    
 ];
 ?>
