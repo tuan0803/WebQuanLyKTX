@@ -1,18 +1,26 @@
 <?php
 class Qlyphong extends Controller
 {
+    public $position;
     public $model_home;
     public $data = [];
 
     public function __construct()
     {
         $this->model_home = $this->model('NvPhong');
+        $this->getPosition();
+    }
+    public function getPosition(){
+        $session = new Session();
+        $user    = $session->data('user');
+        $this->position= $user["position"];
+        
     }
 
     public function index()
     {
         // $this->data['content'] = 'staff/dashboard_NV.php';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function listphong()
     {
@@ -25,7 +33,7 @@ class Qlyphong extends Controller
         ";
         $this->data['list'] = $this->model_home->query($sql);
         $this->data['content'] = 'staff/NV_DSphong';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function suaphong()
     {

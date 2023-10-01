@@ -16,15 +16,15 @@
             </tr>
             <tr>
             <td>
-            <button style="background-color:   rgb(128,218,235); color:white;"><a style="background-color:   rgb(128,218,235); color:white;" href="./updateservice.php">Cập nhật</a></button>
+           
             <button style="background-color:   rgb(128,218,235); color:white;" name="buttonTim">Tìm kiếm</button></td>
             <td><input style="border-radius: 10px;" type="text" name="txtid" placeholder="Hãy nhập mã hóa đơn"></td>
-            <td><button style="background-color:   rgb(128,218,235); color:white;" name="buttonTim"><a style="background-color:   rgb(128,218,235); color:white;" href="./servicecost.php">Quay lại</a></button></td>
+            
             </tr>
       </table>
         <table  border=1 width=150% style="border: 1px solid #000; padding-left: 320px; padding-top:300px;">
         <tr style="background: rgb(65,74,76); color:aliceblue;">
-                <th>STT</th>
+                
                 <th>Mã hóa đơn</th>
                 <th>Mã phòng</th>
                 <th>Thời hạn</th>
@@ -40,7 +40,7 @@
                 <th>Tiền vệ sinh</th>
                 <th>Tổng tiền</th>
                 <th>Mỗi cá nhân</th>
-                <th>Thao tác</th>
+                
             </tr>
             
             <?php
@@ -59,7 +59,7 @@
                 $wificost      = $list1['wificost'] ?? '';
                 $wastcost= $list1['wastcost'] ?? '';
                 $totalcost = $list1['totalcost'] ?? '';
-                $individualcost = $list1['individualcost'] ?? '';
+                $indivisualcost = $list1['indivisualcost'] ?? '';
 
 
                 echo "<tr>";
@@ -77,7 +77,7 @@
                 echo "<td>" . "<p>$wificost</p>" . "</td>";
                 echo "<td>" . "<p>$wastcost</p>" . "</td>";
                 echo "<td>" . "<p>$totalcost </p>" . "</td>";
-                echo "<td>" . "<p>$individualcost</p>" . "</td>";
+                echo "<td>" . "<p>$indivisualcost</p>" . "</td>";
                 
 
                 echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlyservicebill/showformsua/" . $id . "'>Sửa</a></td>";

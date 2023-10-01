@@ -32,7 +32,7 @@
             echo "<td>" . "<p>$address</p>" . "</td>";
             echo "<td>" . "<p>$salary</p>" . "</td>";
             echo "<td>" . "<p>$old </p>" . "</td>";
-            echo "<td>" . "<p>$position r</p>" . "</td>";
+            echo "<td>" . "<p>$position </p>" . "</td>";
 
             echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlynhanvien/showformsua/" . $id . "'>Sửa</a></td>";
             echo "<td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlynhanvien/deletenv/" . $id . "'>Xóa</a></td>";

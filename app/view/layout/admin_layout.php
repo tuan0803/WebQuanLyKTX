@@ -157,22 +157,19 @@
                             <ul>
                                 <li>
                                     <span class="title">
-                                        <i class='fa fa-lightbulb-o'></i>
-                                        <a style="color:black;" href="./electric.php"><span>Cập nhật số điện</span></a>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/listservicebill">
+                                            <i class='bx bx-search'></i>
+                                            <span>Danh sách hóa đơn</span>
+                                        </a>
                                     </span>
                                 </li>
->>>>>>> 8f5d04c0de9b40a615ead50e6e0f73a7b8ea2789
 
                                 <li>
                                     <span class="title">
-                                        <i class="fa fa-tint"></i>
-                                        <a style="color:black;" href="./water.php"><span>Cập nhật số nước</span></a>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="title">
-                                        <i class="fa fa-credit-card"></i>
-                                        <a style="color:black;" href="./servicecost.php"><span>Phí dịch vụ chung</span></a>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/showformthem">
+                                            <i class="fa-brands fa-servicestack"></i>
+                                            <span>Thêm hóa đơn </span>
+                                        </a>
                                     </span>
                                 </li>
                             </ul>
@@ -188,15 +185,18 @@
                             <ul>
                                 <li>
                                     <span class="title">
-                                        <i class='bx bx-search'></i>
-                                        <span>Tìm kiếm</span>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/listbill">
+                                            <i class='bx bx-search'></i>
+                                            <span>Danh sách hóa đơn</span>
+                                        </a>
                                     </span>
                                 </li>
-
                                 <li>
                                     <span class="title">
-                                        <i class="fa-solid fa-sack-dollar"></i>
-                                        <span>Cập nhật</span>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/showformthem">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            <span>Them hoa don</span>
+                                        </a>
                                     </span>
                                 </li>
                             </ul>
@@ -212,14 +212,18 @@
                             <ul>
                                 <li>
                                     <span class="title">
-                                        <i class='bx bx-search'></i>
-                                        <span>Số lượng sinh viên</span>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/sinhvien">
+                                            <i class='bx bx-search'></i>
+                                            <span>Số lượng sinh viên</span>
+                                        </a>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="title">
-                                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                                        <span>Doanh thu</span>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/no">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            <span>Doanh thu</span>
+                                        </a>
                                     </span>
                                 </li>
                             </ul>

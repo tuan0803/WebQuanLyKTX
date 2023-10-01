@@ -142,7 +142,7 @@
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
-                                <a href="#">
+                                
                                     <i class="fa-brands fa-servicestack"></i>
                                     <span>Dịch vụ</span>
                                     <i class='bx bx-chevron-down'></i>
@@ -151,18 +151,18 @@
                             <ul>
                                 <li>
                                     <span class="title">
-                                        <a href>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/listservicebill">
                                             <i class='bx bx-search'></i>
-                                            <span>Tìm kiếm</span>
+                                            <span>Danh sách hóa đơn</span>
                                         </a>
                                     </span>
                                 </li>
 
                                 <li>
                                     <span class="title">
-                                        <a href>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/showformthem">
                                             <i class="fa-brands fa-servicestack"></i>
-                                            <span>Cập nhật</span>
+                                            <span>Thêm hóa đơn </span>
                                         </a>
                                     </span>
                                 </li>
@@ -172,25 +172,45 @@
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
-                                <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/listbill">
+                                
                                     <i class="fa-solid fa-sack-dollar"></i>
                                     <span>Hóa đơn</span>
-                                </a>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="navbar-link">
-                            <span class="btn-dropdown">
-                                <a href="">
-                                    <i class="fa-solid fa-signal"></i>
-                                    <span>Thống kê</span>
+                                    <i class='bx bx-chevron-down'></i>
                                 </a>
                             </span>
                             <ul>
                                 <li>
                                     <span class="title">
-                                        <a href>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/listbill">
+                                            <i class='bx bx-search'></i>
+                                            <span>Danh sách hóa đơn</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/showformthem">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            <span>Them hoa don</span>
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-link">
+                            <span class="btn-dropdown">
+                                
+                                    <i class="fa-solid fa-signal"></i>
+                                    <span>Thống kê</span>
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                            </span>
+                            <ul>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/sinhvien">
                                             <i class='bx bx-search'></i>
                                             <span>Số lượng sinh viên</span>
                                         </a>
@@ -198,7 +218,7 @@
                                 </li>
                                 <li>
                                     <span class="title">
-                                        <a href>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/no">
                                             <i class="fa-solid fa-file-invoice-dollar"></i>
                                             <span>Doanh thu</span>
                                         </a>

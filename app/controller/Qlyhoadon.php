@@ -1,23 +1,32 @@
 <?php
 class Qlyhoadon extends Controller
 {
+    public $position;
     public $model_home;
     public $data = [];
 
     public function __construct()
     {
         $this->model_home = $this->model('NvHoadon');
+        $this->getPosition();
+    }
+    public function getPosition(){
+        $session = new Session();
+        $user    = $session->data('user');
+        $this->position= $user["position"];
+        
     }
 
     public function index()
     {
         $this->data['content'] = 'staff/dashboard_NV.php';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function listbill()
     {
         $sql = "SELECT lastbill.*,
-        servicebill.electriccost as electric_cost,
+        servicebill.id as servicebill_id,
+        servicebill.id as electric_cost,
         servicebill.watercost as water_cost,
         servicebill.wificost as wifi_cost,
         servicebill.wastcost as wast_cost,
@@ -34,9 +43,81 @@ class Qlyhoadon extends Controller
          ";
         $this->data['list'] = $this->model_home->query($sql);
         $this->data['content'] = 'staff/Nv_DShoadon';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
 
+    public function searchlastbill()
+    {
+        if (isset($_POST["id"])) {
+            $key = $_POST["id"];
+            $sql = "SELECT 
+            student.id AS student_id,
+            student.name AS student_name,
+            contract.id AS contractid,
+            lastbill.id AS id,
+            lastbill.date AS date,
+            lastbill.cost AS cost,
+            lastbill.description AS description,
+            lastbill.status AS status,
+             servicebill.id as servicebill_id,
+            servicebill.id as electric_cost,
+            servicebill.watercost as water_cost,
+            servicebill.wificost as wifi_cost,
+            servicebill.wastcost as wast_cost,
+            contract.id AS contractid, 
+            contract.cost AS cost_room,  
+            room.name AS room_name
+            FROM student
+            INNER JOIN contract ON contract.id = student.contractid
+            LEFT JOIN lastbill ON lastbill.contractid=contract.id
+            INNER JOIN servicebill ON servicebill.id = lastbill.serviceid
+            LEFT JOIN room ON room.id = servicebill.roomid
+            WHERE  student.id Like'%$key%' or student.name like '%$key%'
+         ";
+             $list = $this->model_home->query($sql);
+             $output = "";
+             $i=1;
+             foreach ($list as $list1) {
+                $id = $list1['id'] ?? '';
+                $contractid = $list1['contractid'] ?? '';
+                $student_id = $list1['student_id'] ?? '';
+                $student_name = $list1['student_name'] ?? '';
+                $room_name = $list1['room_name'] ?? '';
+                $servicebill_id = $list1['servicebill_id'] ?? '';
+                $date = $list1['date'] ?? '';
+                $cost = $list1['cost'] ?? '';
+                $description = $list1['description'] ?? '';
+                $status = "";
+                if($list1['status'] =="1"){
+                    $status="Thanh toán đủ";
+                }else{
+                    $status="Chưa thanh toán";
+                }
+                $output .= "
+                <tr>
+                    <td>" . $i++ . "</td>
+                    <td>" . $id . "</td>
+                    <td>" . $contractid . "</td>
+                    <td>" . $student_id . "</td>
+                    <td>" . $student_name . "</td>
+                    <td>" . $room_name . "</td>
+                    <td>" . $servicebill_id . "</td>
+                    <td>" . $date . "</td>
+                    <td>" . $cost . "</td>
+                    <td>" . $description . "</td>
+                    <td>" . $status . "</td>
+                    <td><a id='edit_link' href='javascript:void(0);' onclick='showEditContract(" . $id . ")'><i class='bx bx-edit'></i></a></td>
+                    </td>
+                    <td> <a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlyhopdong/delete/?contractId=" . $id . "' onclick='deleteRoom('" . $id . "')'>
+                            <i class='bx bx-trash' style='color: red;'></i>
+                        </a></td>
+                </tr>
+                ";
+             }
+             echo $output;
+
+        }
+    }
     public function suabill()
     {
         $request = new Request();
@@ -71,7 +152,7 @@ class Qlyhoadon extends Controller
         $this->data['list_contract'] = $this->model_home->query($sql_contract);
         $this->data['list_service'] = $this->model_home->query($sql_service);
         $this->data['content'] = 'staff/Nv_themhoadon';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function showDetail()
     {
@@ -115,7 +196,7 @@ class Qlyhoadon extends Controller
                 $contractcost = $list2['contractcost'] ?? '';
                 $roomname = $list2['roomname'] ?? '';
                 $total_cost = $contractcost + $cost;
-               
+
 
                 $output .= "
                         <div class='mb-3' style='display: flex; gap: 2rem; padding: 10px;'>
@@ -131,7 +212,6 @@ class Qlyhoadon extends Controller
                                 <label  style='font-size: 1.4rem;'>Họ và tên</label>
                                 <p type='text' class='form-control' style='max-width: 600px; font-size: 1.6rem; background: #F5F5F5;'>$studentname  </p>
                             </div>
-
                         </div>
                         <div class='mb-3' style='display: flex; gap: 2rem; padding: 10px;'>
                             <div>
@@ -188,7 +268,6 @@ class Qlyhoadon extends Controller
                                 <label  style='font-size: 1.4rem;'>Ngày thanh toán</label>
                                 <input type='date' class='studentid form-control' name='date' style='max-width: 600px; font-size: 1.6rem; background: #F5F5F5;'>
                             </div>
-
                         </div>
                         <div class='mb-3' style='display: flex; gap: 3rem; padding: 10px;'>
                             <div class='form-check'>
@@ -202,7 +281,6 @@ class Qlyhoadon extends Controller
                                 <textarea name='description' class='form-control'   cols='60' rows='3' style='background: #F5F5F5;'></textarea>
                             </div>
                         </div>
-
                     ";
             }
             echo $output;
@@ -319,6 +397,6 @@ class Qlyhoadon extends Controller
     public function test()
     {
 
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
 }

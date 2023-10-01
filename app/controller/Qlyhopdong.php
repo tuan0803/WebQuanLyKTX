@@ -1,18 +1,26 @@
 <?php
 class Qlyhopdong extends Controller
 {
+    public $position;
     public $model_home;
     public $data = [];
 
     public function __construct()
     {
         $this->model_home = $this->model('NvContract');
+        $this->getPosition();
+    }
+    public function getPosition(){
+        $session = new Session();
+        $user    = $session->data('user');
+        $this->position= $user["position"];
+        
     }
 
     public function index()
     {
         $this->data['content'] = 'staff/dashboard_NV.php';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function listcontract()
     {
@@ -21,7 +29,7 @@ class Qlyhopdong extends Controller
         $sql_room = "SELECT room.id, room.name FROM room";
         $this->data['list_room'] = $this->model_home->query($sql_room);
         $this->data['content'] = 'staff/NV_DShopdong';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function suacontract()
     {
@@ -42,7 +50,7 @@ class Qlyhopdong extends Controller
         $sql = "SELECT room.id, room.name FROM room";
         $this->data['list_room'] = $this->model_home->query($sql);
         $this->data['content'] = 'staff/Nv_Addcontract';
-        $this->render('layout/staff_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
 
     public function showBed()
@@ -81,6 +89,6 @@ class Qlyhopdong extends Controller
     }
     public function test()
     {
-        $this->render('layout/admin_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
 }

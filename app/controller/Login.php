@@ -29,7 +29,7 @@ class Login extends Controller{
                 'userid'=>$tmp["userid"]
             ]);
             if ($tmp["position"]=="admin") {
-                $this->render('home/test', $this->data);
+                $this->render('layout/admin_layout', $this->data);
                 
             } elseif($tmp["position"]=="staff") {
                 $this->render('layout/staff_layout', $this->data);

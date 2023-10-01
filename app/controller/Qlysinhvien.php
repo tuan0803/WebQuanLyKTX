@@ -1,14 +1,21 @@
 <?php
 class Qlysinhvien extends Controller
 {
+    public $position;
     public $model_home;
     public $data = [];
     static public $id;
     public function __construct()
     {
         $this->model_home = $this->model('SinhVien');
+        $this->getPosition();
     }
-
+    public function getPosition(){
+        $session = new Session();
+        $user    = $session->data('user');
+        $this->position= $user["position"];
+        
+    }
     public function index()
     {
         $this->listsv();
@@ -17,7 +24,7 @@ class Qlysinhvien extends Controller
     public function showformthem()
     {
         $this->data['content'] = 'staff/addstudent';
-        $this->render('layout/admin_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function themsv()
     {
@@ -34,7 +41,7 @@ class Qlysinhvien extends Controller
         $detail                = $this->model_home->find($id);
         $this->data['content'] = 'staff/fixstudent';
         $this->data['info']    = $detail;
-        $this->render('layout/admin_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
     public function suasv()
     {
@@ -59,7 +66,7 @@ class Qlysinhvien extends Controller
     {
         $this->data['list']    = $this->model_home->all();
         $this->data['content'] = 'staff/numberstudent';
-        $this->render('layout/admin_layout', $this->data);
+        $this->render('layout/'.$this->position.'_layout', $this->data);
     }
 
 }

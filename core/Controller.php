@@ -13,6 +13,7 @@ class Controller
         }
         return false;
     }
+    
     public function render($view, $data=[])
     {
         extract($data);

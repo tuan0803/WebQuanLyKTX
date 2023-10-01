@@ -44,13 +44,13 @@
         <li><input name="waternumnew" style="background-color: rgb(248, 246, 243); width:400px;" type="text"></li>
         <br>
         <li>Tiền mạng :</li>
-        <li><input name="wificost" style="background-color: rgb(248, 246, 243); width:400px;" type="text"></li>
+        <li><input name="wificost" value="150000" style="background-color: rgb(248, 246, 243); width:400px;" type="text"></li>
         <br>
         <li>Tiền vệ sinh :</li>
-        <li><input name="wastcost" style="background-color: rgb(248, 246, 243); width:400px;" type="text"></li>
+        <li><input name="wastcost" value="200000" style="background-color: rgb(248, 246, 243); width:400px;" type="text"></li>
         <br>
         <li>
-          <button name="buttonCapnhat" style="margin-right: 20px; width:100px; background-color:   rgb(128,218,235);"><a style="background-color:   rgb(128,218,235); color:white;" href="./updateservice.php">Cập nhật</a></button>
+          <button type="submit" style="margin-right: 20px; width:100px; background-color:   rgb(128,218,235);"><a style="background-color:   rgb(128,218,235); color:white;" >Cập nhật</a></button>
           <button style="background-color:   rgb(128,218,235);"><a style="background-color:   rgb(128,218,235); color:white;" href="./servicecost.php">Quay lại</a></button>  
         </li> 
       </ul>
