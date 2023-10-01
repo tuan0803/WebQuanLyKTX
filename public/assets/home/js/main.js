@@ -11,7 +11,6 @@ const notifi=document.querySelector(".nav-notifi")
 const open_notifi=document.querySelector(".sub-notifis")
 const message=document.querySelector(".message-box")
 const open_message=document.querySelector(".message-menus")
-const overlay=document.querySelector("#overlay")
 
 
 dropdown.forEach((element) => {

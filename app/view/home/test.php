@@ -1,4 +1,5 @@
 Chi Tiet San Pham - 
 <?php
-print_r($list);
+$sessiondt = new Session();
+print_r($sessiondt->data("user",""));
 ?>

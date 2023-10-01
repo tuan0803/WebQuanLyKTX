@@ -7,8 +7,8 @@ class Staff extends Controller{
     }
 
     public function index(){
-        $this->data['content'] = 'staff/dashboard_NV.php';
-        $this->render('layout/guest_layout', $this->data);
+        // $this->data['content'] = 'staff/dashboard_NV.php';
+        $this->render('layout/staff_layout', $this->data);
     }
     public function detail($id=0){
         $this->data['info'] = $this->model_home->getDetail($id);

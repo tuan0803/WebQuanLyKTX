@@ -7,21 +7,30 @@ class Login extends Controller{
     }
 
     public function index(){
+        $sessionData = new Session();
+        $sessionData->delete('user');
         $this->data['content'] = 'home/login';
         $this->render('home/login', $this->data);   
     }
     public function checkuser(){
+        $sessionData = new Session();
         $reques = new Request();
         $userrq   = $reques->getFields();
-        $id     = "viet";
-        print_r($userrq);
+        $id     = $userrq["username"];
         
-        $tmp= $this->model_home->all();
-        print_r($tmp);
-        print_r($this->model_home->find($id));
+        
+        $tmp= $this->model_home->find($id);
+        
+        
         if($userrq["password"]==$tmp["password"]){
+            $sessionData->data('user', [
+                'name'=>$id,
+                'position'=>$tmp["position"],
+                'userid'=>$tmp["userid"]
+            ]);
             if ($tmp["position"]=="admin") {
-                $this->render('layout/admin_layout', $this->data); 
+                $this->render('home/test', $this->data);
+                
             } elseif($tmp["position"]=="staff") {
                 $this->render('layout/staff_layout', $this->data);
             }
@@ -29,6 +38,9 @@ class Login extends Controller{
                 $this->render('layout/student_layout', $this->data);
             }
             
+        }
+        else {
+            $this->render('layout/guest_layout', $this->data);
         }
 
     }

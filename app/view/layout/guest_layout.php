@@ -27,7 +27,13 @@
         </nav>
     </header>
     <?php
-    $this->render($content);
+    if (isset($content)) {
+        $this->render($content);
+    }
+    else{
+        $this->render('home/index');
+    }
+    
     ?>
     <!-- <script src="<?php echo _WEB_ROOT?>/public/assets/home/js/utility-home.js"></script> -->
     <script src="<?php echo _WEB_ROOT?>/public/assets/home/js/banner-home.js"></script>

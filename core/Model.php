@@ -37,7 +37,7 @@ abstract class Model extends Database{
             $fieldSelect = '*';
         }
 
-        $sql = "SELECT $fieldSelect FROM $tableName WHERE  $primaryKey=$id";
+        $sql = "SELECT $fieldSelect FROM $tableName WHERE  $primaryKey='$id'";
         $query = $this->db->query($sql);
         if (!empty($query)){
             

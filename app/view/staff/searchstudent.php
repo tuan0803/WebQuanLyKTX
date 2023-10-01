@@ -54,7 +54,7 @@ if(isset($_POST['buttonTim'])){
                 
             ?>
             <tr>
-                <td><?php echo $i++ ?></td>
+            + ?></td>
                 <td><?php echo $row['id'] ?></td>
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['gender'] ?></td>

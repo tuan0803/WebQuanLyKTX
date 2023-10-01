@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+   
 <div class="error-form">
         <h2>Form Phản Ánh Lỗi Hệ Thống</h2>
-        <form action="process_error.php" method="POST">
+        <form action="saverp" method="POST">
             <label for="error_type">Loại lỗi:</label>
-            <input type="text" id="error_type" name="error_type" required>
+            <input type="text" id="error_type" name="name" required>
 
             <label for="error_description">Mô tả lỗi:</label>
-            <textarea id="error_description" name="error_description" rows="4" required></textarea>
+            <textarea id="error_description" name="fulldesc" rows="4" required></textarea>
 
             <button type="submit">Gửi Phản Ánh</button>
         </form>

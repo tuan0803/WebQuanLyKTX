@@ -750,19 +750,14 @@ a {
 
 
 .main-course .header-container .box-right div.box-search {
-  background-color: var(--color-light3);
   border-radius: 50px;
+  display: flex;
 }
 
 .main-course .header-container .box-right div.box-search .bx-search {
   cursor: pointer;
   margin-left: 10px;
   font-size: 2rem;
-}
-
-.main-course .header-container .box-right div.box-search:hover {
-  box-shadow: 0 0 0 3px var(--color-blue-linght), 0 0 0 3px var(--color-blue-linght);
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .main-course .header-container .box-right input {
@@ -1058,148 +1053,11 @@ border: 0;
 }
 
 
-/* =====change-bed==== */
-
-.change-bed {
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  background: var(--color-light1);
-  z-index: 15;
-  border-radius: 10px;
-  display: none;
-}
-.change-bed .change{
-  display: flex;
-
-}
-.change-bed .change td a{
-  padding: 10px;
-}
-.change-bed .change td a .bx-x{
-  font-size: 2rem;
-}
-.change-bed .table-change {
-  margin: 20px;
-}
-.change-bed .table-change tr td button{
-  padding: 10px;
-  border-radius: 10px;
-  background: var(--color-blue);
-  color: var(--color-bgr);
-  margin-left: 40%;
-}
-.change-bed .table-change tr td button:hover{
-  cursor: pointer;
-  background-color: var(--color-blue-linght);
-}
 
 
 
 
-
-
-/* ====Hóa đơn==== */
-
-#content main {
-	width: 100%;
-	padding: 36px 24px;
-	font-family: var(--poppins);
-	max-height: calc(100vh - 56px);
-}
-#content main .head-title {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	grid-gap: 16px;
-	flex-wrap: wrap;
-}
-#content main .head-title .left h1 {
-	font-size: 36px;
-	font-weight: 600;
-	margin-bottom: 10px;
-	color: var(--dark);
-}
-#content main .head-title .left .breadcrumb {
-	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-}
-#content main .head-title .left .breadcrumb li {
-	color: var(--dark);
-}
-#content main .head-title .left .breadcrumb li a {
-	color: var(--dark-grey);
-	pointer-events: none;
-}
-#content main .head-title .left .breadcrumb li a.active {
-	color: var(--blue);
-	pointer-events: unset;
-}
-#content main .head-title .btn-download {
-	height: 36px;
-	padding: 0 16px;
-	border-radius: 36px;
-	background: var(--blue);
-	color: var(--light);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-gap: 10px;
-	font-weight: 500;
-}
-
-
-
-
-#content main .box-info {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	grid-gap: 24px;
-	margin-top: 36px;
-}
-#content main .box-info li {
-	padding: 24px;
-	background: var(--light);
-	border-radius: 20px;
-	display: flex;
-	align-items: center;
-	grid-gap: 24px;
-}
-#content main .box-info li .bx {
-	width: 80px;
-	height: 80px;
-	border-radius: 10px;
-	font-size: 36px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-#content main .box-info li:nth-child(1) .bx {
-	background: var(--light-blue);
-	color: var(--blue);
-}
-#content main .box-info li:nth-child(2) .bx {
-	background: var(--light-yellow);
-	color: var(--yellow);
-}
-#content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
-	color: var(--orange);
-}
-#content main .box-info li .text h3 {
-	font-size: 24px;
-	font-weight: 600;
-	color: var(--dark);
-}
-#content main .box-info li .text p {
-	color: var(--dark);	
-}
-
-
-
-
-
+/* MAIN */
 #content main .table-data {
 	display: flex;
 	flex-wrap: wrap;
@@ -1208,132 +1066,95 @@ border: 0;
 	width: 100%;
 	color: var(--dark);
 }
-#content main .table-data > div {
+
+#content main .table-data>div {
 	border-radius: 20px;
-	background: var(--color-light3);
+	background: var(--light);
 	padding: 24px;
 	overflow-x: auto;
 }
+
 #content main .table-data .head {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
 	margin-bottom: 24px;
 }
+
 #content main .table-data .head h3 {
 	margin-right: auto;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 600;
 }
+
 #content main .table-data .head .bx {
 	cursor: pointer;
- font-size: 1.4rem; 
 }
-#content main .table-data .head .bx:hover{
-color: var(--color-blue);
-transform: scale(1.2);
-}
-#content main .table-data .head input{
-  width: 100%;
-  font-size: 1.4rem;
-  border-radius: 10px;
-  padding:0 10px;
-}
-#content main .table-data .order {
-width: 500px;
 
+#content main .table-data .order {
+	flex-grow: 1;
+	flex-basis: 500px;
 }
+
 #content main .table-data .order table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 #content main .table-data .order table th {
 	padding-bottom: 12px;
-	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
+
 #content main .table-data .order table td {
 	padding: 16px 0;
 }
+
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
 	grid-gap: 12px;
 	padding-left: 6px;
 }
-#content main .table-data .order table tr td a {
-	color: var(--color-black);
-  text-decoration: none;
-}
 
-#content main .table-data .order table tr:hover {
+#content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
-}
-
-#content main .table-data .order table tr td .status {
-	font-size: 10px;
-	padding: 6px 16px;
-	color: var(--light);
-	border-radius: 20px;
-	font-weight: 700;
 }
 
 
 #content main .table-data .todo {
 	flex-grow: 1;
+	flex-basis: 300px;
 }
+
 #content main .table-data .todo .todo-list {
 	width: 100%;
 }
-#content main .table-data .todo .todo-list table {
+
+#content main .table-data .todo .todo-list li {
 	width: 100%;
-  font-size: 1.5rem;
+	margin-bottom: 16px;
+	background: var(--grey);
+	border-radius: 10px;
+	padding: 14px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-#content main .table-data .todo .todo-list table tr  td {
+
+#content main .table-data .todo .todo-list li .bx {
 	cursor: pointer;
-
-}
-main {
-  padding: 90px 20px 30px;
-}
-/* MAIN */
-/* CONTENT */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width: 576px) {
-
-	#content main .box-info {
-		grid-template-columns: 1fr;
-	}
-
-	#content main .table-data .head {
-		min-width: 420px;
-	}
-	#content main .table-data .order table {
-		min-width: 420px;
-	}
-	#content main .table-data .todo .todo-list {
-		min-width: 420px;
-	}
 }
 
+#content main .table-data .todo .todo-list li.completed {
+	border-left: 10px solid var(--blue);
+}
 
-/*footer */
+#content main .table-data .todo .todo-list li.not-completed {
+	border-left: 10px solid var(--orange);
+}
 
-
-
-/* Initially, the input is hidden off-screen */
-
+#content main .table-data .todo .todo-list li:last-child {
+	margin-bottom: 0;
+}

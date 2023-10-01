@@ -2,7 +2,8 @@
 
 class App
 {
-    private $__controller, $__action, $__param;
+    private $__controller, $__action, $__param, $__session;
+    private $__controllertmp;
     function __construct()
     {
         global $routes;
@@ -11,6 +12,17 @@ class App
         }
         $this->__action = 'index';
         $this->__param  = [];
+        $this->__session = new Session();
+        $tmp             = $this->__session->data("user", "");
+        if (!isset($tmp)) {
+            $this->__session->data('user', [
+                'name'=>'',
+                'position'=>'guest',
+                'userid'=>''
+            ]);
+        }
+        
+        
         $this->handleUrl();
     }
     function getUrl()
@@ -38,15 +50,17 @@ class App
         if (!empty($urlArr[0])) {
 
             $this->__controller = ucfirst($urlArr[0]);
+            
 
         }
         if (file_exists('app/controller/' . $this->__controller . '.php')) {
             require_once 'app/controller/' . $this->__controller . '.php';
 
+
             //check class
             if (class_exists($this->__controller)) {
                 $this->__controller = new $this->__controller();
-
+                $this->__controllertmp = ucfirst($urlArr[0]);
                  unset($urlArr[0]);
                 
 
@@ -69,8 +83,40 @@ class App
         //Xử lý Param
         $this->__param = array_values($urlArr);
         //check method
+        $user = $this->__session->data("user", "");
+        
+        require_once 'app/controller/Login.php';
         if (method_exists($this->__controller, $this->__action)) {
-            call_user_func_array([$this->__controller, $this->__action], $this->__param);
+            if ($user['position']=='admin') {
+                call_user_func_array([$this->__controller, $this->__action], $this->__param);
+            } 
+            
+            elseif ($user['position']=='staff') {
+                if ($this->__controllertmp!='Qlynhanvien') {
+                    call_user_func_array([$this->__controller, $this->__action], $this->__param);
+                } else {
+
+                    $this->__controller = new Login();
+                    $this->__action     = "index";
+                    call_user_func_array([$this->__controller, $this->__action], $this->__param);
+                }
+            }
+            elseif ($user['position']!='student') {
+                if ($this->__controllertmp=='Home'||$this->__controllertmp=='Login') {
+                    call_user_func_array([$this->__controller, $this->__action], $this->__param);
+                } else {
+                    
+                    $this->__controller = new Login();
+                    $this->__action     = "index";
+                    call_user_func_array([$this->__controller, $this->__action], $this->__param);
+                }
+                
+            }
+            else {
+                call_user_func_array([$this->__controller, $this->__action], $this->__param);
+            }
+            
+           
         } else {
             $this->loadError();
         }
