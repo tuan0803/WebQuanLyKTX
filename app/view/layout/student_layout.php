@@ -92,7 +92,7 @@
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
-                                <a href="#">
+                                
                                     <i class="fa-brands fa-servicestack"></i>
                                     <span>Hoa Don</span>
                                     <i class='bx bx-chevron-down'></i>
@@ -175,7 +175,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href>
+                    <a href ="<?php echo _WEB_ROOT ?>/login/index">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Đăng xuất</span>
                     </a>

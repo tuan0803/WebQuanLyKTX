@@ -35,6 +35,21 @@ class Qlyphong extends Controller
         $this->data['content'] = 'staff/NV_DSphong';
         $this->render('layout/'.$this->position.'_layout', $this->data);
     }
+    public function timkiem(){
+        $request = new Request();
+        $update   = $request->getFields();
+        $id        = $update['roomid'];
+        $sql = "SELECT room.*,
+        COUNT(CASE WHEN bed.status = 0 THEN 1 ELSE NULL END) AS SoLuongGiuongStatus0,
+        COUNT(CASE WHEN bed.status = 1 THEN 1 ELSE NULL END) AS SoLuongGiuongStatus1
+        FROM room
+        LEFT JOIN bed ON room.id = bed.roomid
+        WHERE room.id='$id'
+        ";
+        $this->data['list'] = $this->model_home->query($sql);
+        $this->data['content'] = 'staff/NV_DSphong';
+        $this->render('layout/'.$this->position.'_layout', $this->data);
+    }
     public function suaphong()
     {
         $request = new Request();

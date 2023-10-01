@@ -272,7 +272,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href>
+                <a href ="<?php echo _WEB_ROOT ?>/login/index">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Đăng xuất</span>
                     </a>

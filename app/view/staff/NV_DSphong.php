@@ -17,8 +17,12 @@
             <h1>Danh sách phòng</h1>
             <div class="box-right" style="right: 0; gap: 1rem;">
                 <div class="box-search">
-                    <i class='bx bx-search'></i>
-                    <input type="text" id="search">
+                    <form action="timkiem" method="post">
+                    <input type="text" name="roomid" id="search">
+                    <i><button type="submit" class='bx bx-search'></button></i>
+                    </form>
+                    
+                    
                 </div>
                 <button onclick="showAddRoom()"
                     style="padding: 10px; align-items: center; display: flex; background: blue; color: white; outline: none; border-radius: 50%; cursor: pointer; "><i
