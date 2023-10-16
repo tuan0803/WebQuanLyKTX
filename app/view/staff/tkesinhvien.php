@@ -161,7 +161,7 @@
         2]);
 
       var options = {
-        title: "Biều đồ sinh viên phan bố theo quê quán",
+        title: "Biều đồ số lượng hợp đồng sẽ hết hạn trong 4 tháng tiếp theo",
         width: 600,
         height: 400,
         bar: { groupWidth: "95%" },

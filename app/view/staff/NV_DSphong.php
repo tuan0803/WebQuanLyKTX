@@ -36,7 +36,7 @@
                         <th>STT</th>
                         <th>ID</th>
                         <th>Tên Phòng</th>
-                        <th>Số người hiện tại/tối đa</th>
+                        <th>Số người hiện tại/còn trống</th>
                         <th colspan="4">Trạng thái</th>
                     </tr>
 

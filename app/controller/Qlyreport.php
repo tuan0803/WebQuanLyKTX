@@ -47,6 +47,69 @@ class Qlyreport extends Controller{
         $this->data['content'] = 'student/listreport';
         $this->render('layout/'.$this->position.'_layout', $this->data);
     }
+    public function listreport_nv(){
+        echo $this->position;
+        if($this->position=='staff'||$this->position=='admin'){
+            $this->data['list'] = $this->model_home->all();
+            $this->data['content'] = 'staff/listReport_nv';
+            $this->render('layout/'.$this->position.'_layout', $this->data);
+        }
+        else{
+            $this->listreport();
+        }
+    }
+    public function deletereport($id){
+        if($this->position=="staff"||$this->position=="admin"){
+            $condiction = "id='$id'";
+            $this->model_home->deleteData("report", $condiction);
+            $this->listreport_nv();
+        }
+        else {
+            $this->listreport();
+        }
+        
+    }
+
+    public function wait($id){
+        if($this->position=="staff"||$this->position=="admin"){
+            $sql = "UPDATE report
+            SET status = 0
+            WHERE id='$id';
+            ";
+            $this->model_home->query($sql);
+            $this->listreport_nv();
+        }
+        else {
+            $this->listreport();
+        }
+    }
+    public function fixing($id){
+        if($this->position=="staff"||$this->position=="admin"){
+            $sql = "UPDATE report
+            SET status = 1
+            WHERE id='$id';
+            ";
+            $this->model_home->query($sql);
+            $this->listreport_nv();
+        }
+        else {
+            $this->listreport();
+        }
+    }
+    public function fixed($id){
+        if($this->position=="staff"||$this->position=="admin"){
+            $sql = "UPDATE report
+            SET status = 2
+            WHERE id='$id';
+            ";
+            $this->model_home->query($sql);
+            $this->listreport_nv();
+        }
+        else {
+            $this->listreport();
+        }
+    }
+    
     public function test(){
         
         $this->render('layout/'.$this->position.'_layout', $this->data);

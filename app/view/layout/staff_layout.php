@@ -101,7 +101,7 @@
                                 </li>
                                 <li>
                                     <span class="title">
-                                        <a href="./NV_serviceBill.php">
+                                        <a href="#">
                                             <i class='bx bxs-bed'></i>
                                             <span>Chuyển giường</span>
                                         </a>
@@ -110,6 +110,66 @@
                             </ul>
                         </div>
                     </li>
+                    <li>
+                        <div class="navbar-link">
+                            <span class="btn-dropdown">
+                                <a href="#">
+                                    <i class='bx bxs-school'></i>
+                                    <span>Báo cáo</span>
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                            </span>
+                            <ul>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyreport/listreport_nv">
+                                            <i class='bx bx-search'></i>
+                                            <span style="font-size: 15px; font-weight: 700;">Danh
+                                                sách báo cáo</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <!-- <li>
+                                    <span class="title">
+                                        <a href="#">
+                                            <i class='bx bxs-bed'></i>
+                                            <span>Chuyển giường</span>
+                                        </a>
+                                    </span>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                            <div class="navbar-link">
+                                <span class="btn-dropdown">
+                                    <a href="#">
+                                        <i class='bx bxs-bed'></i>
+                                        <span>Giường</span>
+                                        <i class='bx bx-chevron-down'></i>
+                                    </a>
+                                </span>
+                                <ul>
+                                    <li>
+                                        <span class="title">
+                                            <a href="<?php echo _WEB_ROOT ?>/qlygiuong/listbed">
+                                                <i class='bx bx-search'></i>
+                                                <span
+                                                    style="font-size: 15px; font-weight: 700;">Thêm giường</span>
+                                            </a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="title">
+                                            <a href="#">
+                                                <i class='bx bxs-bed'></i>
+                                                <span>Chuyển giường</span>
+                                            </a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
@@ -221,6 +281,14 @@
                                         <a href="<?php echo _WEB_ROOT ?>/qlythongke/no">
                                             <i class="fa-solid fa-file-invoice-dollar"></i>
                                             <span>Doanh thu</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/thongkehopdong">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            <span>Hợp đồng</span>
                                         </a>
                                     </span>
                                 </li>

@@ -246,7 +246,7 @@ $(".save").on("click", function() {
     var contractid = $("input[name='contractid']").val();
     var date = $("input[name='date']").val();
     var cost = $("input[name='cost']").val();
-    var status = $("input[name='status']").prop("checked") ? 1 : 0;
+    var status = $("input[name='status']").prop("checked") ? 'Thu du' : 'No';
     var description = $("textarea[name='description']").val();
     $.ajax({
         url: "<?php echo _WEB_ROOT ?>/qlyhoadon/themhoadon", 

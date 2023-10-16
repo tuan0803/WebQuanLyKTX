@@ -72,10 +72,10 @@
                                 <td><?php echo $date ?></td>
                                 <td><?php echo $cost ?></td>
                                 <td><?php echo $description ?></td>
-                                <td><?php echo $status ?></td>
+                                <td><?php echo $list1['status'] ?></td>
                                 <td><a id='edit_link' href="javascript:void(0);" onclick="showEditContract('<?php echo $id ?>')"><i class='bx bx-edit'></i></a></td>
                                 </td>
-                                <td> <a id='deleteLink' href="http://localhost/WEBQUANLYKTX/qlyhopdong/delete/?contractId=<?php echo $id ?>" onclick="deleteRoom('<?php echo $id ?>')">
+                                <td> <a id='deleteLink' href="http://localhost/WEBQUANLYKTX/qlyhoadon/delete/?id=<?php echo $id ?>" onclick="deleteRoom('<?php echo $id ?>')">
                                         <i class='bx bx-trash' style="color: red;"></i>
                                     </a></td>
                             </tr>

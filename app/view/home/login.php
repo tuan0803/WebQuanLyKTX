@@ -28,9 +28,9 @@
                 <a href="#">Forgot password</a>
             </div> -->
             <button type="submit" class="btn">Login</button>
-            <!-- <div class="register-link">
-                <p>Chưa có tài khoản? <a href="#">Tạo tài khoản</a></p>
-            </div> -->
+            <div class="register-link">
+                <p>Chưa có tài khoản? <a href="<?php echo _WEB_ROOT ?>/home">Quay lại trang chủ</a></p>
+            </div>
         </div>
     </form>
 

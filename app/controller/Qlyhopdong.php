@@ -16,6 +16,17 @@ class Qlyhopdong extends Controller
         $this->position= $user["position"];
         
     }
+    public function timkiem(){
+        $request = new Request();
+        $update   = $request->getFields();
+        $id        = $update['id'];
+        $sql = "SELECT contract.*, student.name AS student_name FROM contract LEFT JOIN student on contract.studentid=student.id WHERE contract.id='$id'";
+        $this->data['list'] = $this->model_home->query($sql);
+        $sql_room = "SELECT room.id, room.name FROM room";
+        $this->data['list_room'] = $this->model_home->query($sql_room);
+        $this->data['content'] = 'staff/NV_DShopdong';
+        $this->render('layout/'.$this->position.'_layout', $this->data);
+    }
 
     public function index()
     {
