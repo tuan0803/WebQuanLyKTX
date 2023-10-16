@@ -18,23 +18,23 @@
                         <table class="contract-option">
                             <tr align="center">
                                 <td colspan="2">
-                                    <h1>Sửa thông tin hợp đồng <?php echo $list['id'] ?></h1>
+                                    <h1>Sửa thông tin hợp đồng <?php echo $info['id'] ?></h1>
                                 </td>
                             </tr>
                             <tr>
+                                <td>
+                                    <label for="">Mã hợp đồng:</label>
+                                </td>
                                 <td>
                                     <label for="">Mã sinh viên:</label>
                                 </td>
-                                <td>
-                                    <label for="">Họ và tên:</label>
-                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" name="studentid"  value="<?php echo  $list['studentid']  ?>">
+                                    <input type="text" name="id"  value="<?php echo  $info['id']  ?>">
                                 </td>
                                 <td>
-                                    <input type="text" name="name" value="<?php echo $studentname ?>">
+                                    <input type="text" name="studentid"  value="<?php echo  $info['studentid']  ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -42,8 +42,8 @@
                                 <td><label for="">Ngày kết thúc:</label></td>
                             </tr>
                             <tr>
-                                <td><input type="date" name="startdate" value="<?php echo  $list['startdate']?>"></td>
-                                <td><input type="date" name="finishdate" value="<?php echo $list['finishdate'] ?>"></td>
+                                <td><input type="date" name="startdate" value="<?php echo  $info['startdate']?>"></td>
+                                <td><input type="date" name="finishdate" value="<?php echo  $info['finishdate'] ?>"></td>
                             </tr>
                             <tr>
                                 <td><label for="">Chọn Phòng:</label></td>
@@ -52,13 +52,13 @@
                             <tr>
                                 <td class="phong-option">
                                     <select class="form-select room" name="roomid" aria-label="Default select example" style="background: #F5F5F5;">
-                                        <option selected disabled><?php echo $roomid ?></option>
+                                        <option selected disabled><?php echo $info['roomid'] ?></option>
                                         <?php
                                         foreach ($list_room as $list1) {
-                                            $id = $list1['id'] ?? '';
-                                            $name = $list1['name'] ?? '';
+                                            $roomid = $list1['roomid'] ?? '';
+                                            $roomname = $list1['roomname'] ?? '';
                                         ?>
-                                            <option value="<?php echo $id ?>"><?php echo $name ?></option>
+                                            <option value="<?php echo $roomid ?>"><?php echo $roomname ?></option>
                                         <?php
                                         }
                                         ?>
@@ -66,27 +66,27 @@
                                 </td>
                                 <td class="giuong-option">
                                     <select class="form-select" id="bed" name="bedid" aria-label="Default select example" style="background: #F5F5F5;">
-                                    <option selected disabled><?php echo $bedid ?></option>
+                                    <option selected disabled><?php echo $info['bedid'] ?></option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td><label for="">Giá (Đồng):</label></td>
+                                <td><label for="">Trạng thái:</label></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cost"></td>
-                                <td><input type="hidden" name="status">1</td>
+                                <td><input type="number" name="cost" value="<?php echo $info['cost'] ?>"></td>
+                                <td><input type="text" name="status" value="<?php echo $info['status'] ?>"></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><label for="">Ghi chú:</label></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><textarea name="description" id="" cols="40" rows="10"></textarea></td>
+                                <td colspan="2"><textarea name="description" id="" cols="40" rows="10"><?php echo $info['description'] ?></textarea></td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <button class="save">Lưu</button>
-                                    <button class="clear">Làm mới</button>
                                 </td>
                             </tr>
                         </table>
@@ -98,18 +98,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.search').keypress(function(event) {
-            if (event.which === 13) {
-                performSearch();
-            }
-        });
-    });
-
-    function performSearch() {
-        var searchText = $('.search').val();
-        $.post()
-    }
     $(document).ready(function() {
         $(".room").change(function() {
             var id = $(".room").val();
