@@ -78,7 +78,7 @@ a {
 .wrapper.turn_on {
   transform: translateX(0);
   transition: var(--smooth);
-
+  overflow: hidden;
 }
 
 .content {

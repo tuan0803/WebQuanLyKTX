@@ -38,7 +38,7 @@ class Qlyhoadon extends Controller
         FROM lastbill
         INNER JOIN servicebill ON servicebill.id = lastbill.serviceid
         INNER JOIN contract ON contract.id = lastbill.contractid
-        LEFT  JOIN student ON student.contractid =  contract.id
+        LEFT  JOIN student ON student.id =  contract.studentid
         LEFT JOIN room ON room.id = servicebill.roomid
          ";
         $this->data['list'] = $this->model_home->query($sql);
@@ -68,7 +68,7 @@ class Qlyhoadon extends Controller
             contract.cost AS cost_room,  
             room.name AS room_name
             FROM student
-            INNER JOIN contract ON contract.id = student.contractid
+            INNER JOIN contract ON contract.studentid = student.id
             LEFT JOIN lastbill ON lastbill.contractid=contract.id
             INNER JOIN servicebill ON servicebill.id = lastbill.serviceid
             LEFT JOIN room ON room.id = servicebill.roomid
@@ -135,7 +135,7 @@ class Qlyhoadon extends Controller
         $sql_student = "SELECT student.* FROM student";
         $sql_contract = "SELECT student.*, contract.cost as cost_room
         FROM student
-        INNER JOIN contract ON contract.id=student.contractid";
+        INNER JOIN contract ON contract.studentid=student.id";
         $sql_service = "SELECT servicebill.id as id,
         servicebill.electriccost as electric_cost,
         servicebill.watercost as water_cost,
@@ -173,7 +173,7 @@ class Qlyhoadon extends Controller
            contract.cost AS contractcost,
            room.name AS roomname
             FROM student
-            INNER JOIN contract ON contract.id = student.contractid
+            INNER JOIN contract ON contract.studentid = student.id
             INNER JOIN room ON room.id=contract.roomid
             INNER JOIN servicebill ON servicebill.roomid = room.id
             WHERE student.id LIKE '$key' AND servicebill.date LIKE '$date'
@@ -216,7 +216,7 @@ class Qlyhoadon extends Controller
                         <div class='mb-3' style='display: flex; gap: 2rem; padding: 10px;'>
                             <div>
                                 <label style='font-size: 1.4rem;'>Mã hợp đồng</label>
-                                <input type='text' class='studentid form-control' name='contractid'  value=" . $contractid . " style='max-width: 600px; font-size: 1.6rem; background: #F5F5F5;'>
+                                <input type='text' class='studentid form-control' name='id'  value=" . $contractid . " style='max-width: 600px; font-size: 1.6rem; background: #F5F5F5;'>
                             </div>
                             <div>
                                 <label style='font-size: 1.4rem;'>Mã service</label>
@@ -299,9 +299,11 @@ class Qlyhoadon extends Controller
     {
         if (isset($_POST["id"])) {
             $key = $_POST["id"];
-            $sql_contract = "SELECT student.*, contract.cost as cost_room
+            $sql_contract = "SELECT student.*, 
+            contract.id as contractid,
+            contract.cost as cost_room
             FROM student
-            INNER JOIN contract ON contract.id=student.contractid 
+            INNER JOIN contract ON contract.studentid=student.id 
             WHERE student.id like '$key'";
             $list_contract = $this->model_home->query($sql_contract);
             $output = "";
@@ -330,7 +332,7 @@ class Qlyhoadon extends Controller
             $key = $_POST["id"];
             $sql_contract = "SELECT servicebill.date as date
             FROM student
-            INNER JOIN contract ON contract.id=student.contractid 
+            INNER JOIN contract ON contract.studentid=student.id 
             LEFT JOIN servicebill ON servicebill.roomid=contract.roomid
             WHERE student.id like '%$key%' or student.name like '%$key%' or contract.id like '%$key%'";
             $list_date = $this->model_home->query($sql_contract);

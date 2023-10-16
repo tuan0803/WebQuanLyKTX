@@ -109,6 +109,20 @@
         })
         console.log(id);
         });
+        $(".room").change(function() {
+            var id = $(".room").val();
+            $.ajax({
+                url: "<?php echo _WEB_ROOT ?>/qlyhopdong/showBed",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $("#bed").html(data);
+                }
+            })
+            console.log(id);
+        })
     });
 
     function performSearch() {
@@ -127,22 +141,7 @@
     //     $("#Edit-contract-" + contractId).show();
     //     console.log(contractId);
     // };
-    $(document).ready(function() {
-        $(".room").change(function() {
-            var id = $(".room").val();
-            $.ajax({
-                url: "<?php echo _WEB_ROOT ?>/qlyhopdong/showBed",
-                method: "POST",
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $("#bed").html(data);
-                }
-            })
-            console.log(id);
-        })
-    })
+
 </script>
 
 </html>

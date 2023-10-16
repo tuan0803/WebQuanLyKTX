@@ -16,26 +16,29 @@
     <form action="" method="post">
         <section class="main-course" id="content">
             <div class="header-container">
-                <h1>Thêm hóa đơn</h1>
+
+                <h1>Giường</h1>
+
             </div>
             <div class="course-box">
                 <ul class="contract">
                     <!-- MAIN -->
                     <main>
-                        <div class="table-data">
+
+                        <div class="table-data" style="display: flex;">
                             <div class="todo">
                                 <div class="head">
                                     <h3>Danh sách phòng</h3>
-                                    <i class='bx bx-plus'></i>
-                                    <i class='bx bx-filter'></i>
                                 </div>
-                                <div style="display: flex;">
+                                <div>
+
                                     <ul class="todo-list">
                                         <table class="table">
                                             <thead>
                                                 <th>STT</th>
                                                 <th>Mã phòng</th>
-                                                <th>Tên Phòng</th>
+                                                <th colspan="2">Tên Phòng</th>
+
                                             </thead>
                                             <?php
                                             $i = 1;
@@ -53,7 +56,8 @@
                                                     <td><?php echo $name ?></td>
                                                     <td><a id="bed_link" href="javascript:void(0);" onclick="showEditBed('<?php echo $id ?>')"><i class='bx bxs-bed'></i></a></td>
                                                 </tr>
-                                                <form action="<?php echo _WEB_ROOT ?>/qlygiuong/themgiuong" method="post">
+                                                <form method="post">
+
                                                     <div id="Edit-bed-<?php echo $id ?>" class="modal" tabindex="-1" role="dialog" style="display: none; margin-top: 10%;">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -64,10 +68,12 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <input type="hidden" value="<?php echo $id ?>" name="roomid">
+
+                                                                    <input type="hidden" value="<?php echo $id ?>" id="roomid" name="roomid">
                                                                     <div class="mb-3">
                                                                         <label for="nameBed" class="form-label">Mã giường
-                                                                            <input type="text" id="idBed" name="id" class="form-control">
+                                                                            <input type="text" id="idBed" name="bedid" class="form-control">
+
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <input type="hidden" id="status" name="status" value="0" class="form-control">
@@ -90,8 +96,8 @@
                             <div class="order">
                                 <div class="head">
                                     <h3>Danh sách giường</h3>
-                                    <i class='bx bx-search'></i>
-                                    <i class='bx bx-filter'></i>
+
+
                                 </div>
                                 <table class="table">
                                     <thead>
@@ -138,7 +144,9 @@
                                                                 <input type="hidden" value="<?php echo $bedroom ?>" name="roomid">
                                                                 <div class="mb-3">
                                                                     <label for="nameBed" class="form-label">Mã giường
-                                                                        <input type="text" id="idBed" name="id" class="form-control" value="<?php echo $bedid ?>">
+
+                                                                        <input type="text" id="idBed" name="bedid" class="form-control" value="<?php echo $bedid ?>">
+
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <select name="status" class="form-control">

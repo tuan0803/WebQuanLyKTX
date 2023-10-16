@@ -26,9 +26,6 @@
                                     <label for="">Nhập mã hợp đồng</label>
                                 </td>
                                 <td>
-                                    <label for="">Nhập mã sinh viên:</label>
-                                </td>
-                                <td>
                                     <label for="">Họ và tên:</label>
                                 </td>
                             </tr>
@@ -37,10 +34,20 @@
                                     <input type="text" name="id">
                                 </td>
                                 <td>
-                                    <input type="text" name="studentid">
-                                </td>
-                                <td>
-                                    <input type="text" name="name">
+                                    <select name="studentid" id="" class="form-control" style="font-size: 20px; margin-top: -10px; padding: 5px; background: #F5F5F5;">
+                                      <option disabled selected>Chọn sinh viên</option>
+                                        <?php
+                                        foreach($list_student as $list_student){
+                                         $id=$list_student['id'];
+                                         $name=$list_student['name'];
+                                         ?>
+                                        
+                                        <option value="<?php echo $id ?>"><?php echo $name ?> </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -71,8 +78,11 @@
                                     </select>
                                 </td>
                                 <td class="giuong-option">
-                                    <select class="form-select" id="bed" name="bedid" aria-label="Default select example" style="background: #F5F5F5;">
-                                        
+                                    <select class="form-select" name="bedid" aria-label="Default select example" style="background: #F5F5F5;">
+                                        <option selected disabled>Chọn giường</option>    
+                                    <optgroup  id="bed">
+
+                                        </optgroup>
                                     </select>
                                 </td>
                             </tr>
@@ -81,7 +91,7 @@
                             </tr>
                             <tr>
                                 <td><input type="number" name="cost"></td>
-                                <td><input type="hidden" name="status">1</td>
+                                <td><input type="hidden" name="status" value="1"></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><label for="">Ghi chú:</label></td>

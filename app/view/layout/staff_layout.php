@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fa18a5fe5d.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/staff/css/index.css">
     <title>Nhân Viên</title>
 </head>
@@ -40,7 +38,7 @@
                     </li>
                     <li>
                         <div class="navbar-link">
-                        <span class="btn-dropdown">
+                            <span class="btn-dropdown">
                                 <i class='bx bx-list-ul'></i>
                                 <span>Sinh Viên</span>
                                 <i class='bx bx-chevron-down'></i>
@@ -58,7 +56,7 @@
                                         <a style="color:black;" href="<?php echo _WEB_ROOT ?>/qlysinhvien/showformthem"><span>Them Sinh Vien</span></a>
                                     </span>
                                 </li>
-                                
+
                             </ul>
                             <ul>
                                 <li>
@@ -80,12 +78,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
+                   <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
                                 <a href="#">
                                     <i class='bx bxs-school'></i>
-                                    <span>Phòng</span>
+                                    <span>Phòng</span> 
                                     <i class='bx bx-chevron-down'></i>
                                 </a>
                             </span>
@@ -95,15 +93,17 @@
                                         <a href="<?php echo _WEB_ROOT ?>/qlyphong/listphong">
                                             <i class='bx bx-search'></i>
                                             <span style="font-size: 15px; font-weight: 700;">Danh
-                                                sách phòng</span>
+                                                sách hợp phòng</span>
                                         </a>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="title">
-                                        <a href="#">
+
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhopdong/movephong">
+
                                             <i class='bx bxs-bed'></i>
-                                            <span>Chuyển giường</span>
+                                            <span>Chuyển phòng</span>
                                         </a>
                                     </span>
                                 </li>
@@ -113,6 +113,7 @@
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
+
                                 <a href="#">
                                     <i class='bx bxs-school'></i>
                                     <span>Báo cáo</span>
@@ -171,6 +172,7 @@
                             </div>
                         </li>
                     <li>
+
                         <div class="navbar-link">
                             <span class="btn-dropdown">
                                 <i class='bx bx-file'></i>
@@ -189,8 +191,8 @@
                                 </li>
                                 <li>
                                     <span class="title">
-                                        <a href="#">
-                                            <i class='bx bxs-bed'></i>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyhopdong/giahancontract">
+                                            <i class='bx bx-file'></i>
                                             <span>Gia hạn hợp đồng</span>
                                         </a>
                                     </span>
@@ -202,69 +204,32 @@
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
-                                
-                                    <i class="fa-brands fa-servicestack"></i>
-                                    <span>Dịch vụ</span>
-                                    <i class='bx bx-chevron-down'></i>
-                                </a>
-                            </span>
-                            <ul>
-                                <li>
-                                    <span class="title">
-                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/listservicebill">
-                                            <i class='bx bx-search'></i>
-                                            <span>Danh sách hóa đơn</span>
-                                        </a>
-                                    </span>
-                                </li>
 
-                                <li>
-                                    <span class="title">
-                                        <a href="<?php echo _WEB_ROOT ?>/qlyservicebill/showformthem">
-                                            <i class="fa-brands fa-servicestack"></i>
-                                            <span>Thêm hóa đơn </span>
-                                        </a>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="navbar-link">
-                            <span class="btn-dropdown">
-                                
-                                    <i class="fa-solid fa-sack-dollar"></i>
-                                    <span>Hóa đơn</span>
-                                    <i class='bx bx-chevron-down'></i>
+                                <i class="fa-brands fa-servicestack"></i>
+                                <span>Dịch vụ</span>
+                                <i class='bx bx-chevron-down'></i>
                                 </a>
                             </span>
-                            <ul>
-                                <li>
-                                    <span class="title">
-                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/listbill">
-                                            <i class='bx bx-search'></i>
-                                            <span>Danh sách hóa đơn</span>
-                                        </a>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="title">
-                                        <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/showformthem">
-                                            <i class="fa-solid fa-file-invoice-dollar"></i>
-                                            <span>Them hoa don</span>
-                                        </a>
-                                    </span>
-                                </li>
-                            </ul>
+                            
                         </div>
                     </li>
                     <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
-                                
-                                    <i class="fa-solid fa-signal"></i>
-                                    <span>Thống kê</span>
-                                    <i class='bx bx-chevron-down'></i>
+                            <a href="<?php echo _WEB_ROOT ?>/qlyhoadon/listbill">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <span>Hóa đơn</span>
+                                </a>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-link">
+                            <span class="btn-dropdown">
+
+                                <i class="fa-solid fa-signal"></i>
+                                <span>Thống kê</span>
+                                <i class='bx bx-chevron-down'></i>
                                 </a>
                             </span>
                             <ul>
@@ -340,7 +305,7 @@
                     </a>
                 </li>
                 <li>
-                <a href ="<?php echo _WEB_ROOT ?>/login/index">
+                    <a href="<?php echo _WEB_ROOT ?>/login/index">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Đăng xuất</span>
                     </a>
