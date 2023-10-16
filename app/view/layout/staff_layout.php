@@ -78,7 +78,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
+                   <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
                                 <a href="#">
@@ -119,7 +119,7 @@
                             
                         </div>
                     </li>
-                    <li>
+                   <li>
                         <div class="navbar-link">
                             <span class="btn-dropdown">
                                 <i class='bx bx-file'></i>
