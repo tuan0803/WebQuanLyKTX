@@ -31,10 +31,23 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" name="id"  value="<?php echo  $info['id']  ?>">
+                                    <input type="text" name="id" value="<?php echo  $info['id']  ?>">
                                 </td>
                                 <td>
-                                    <input type="text" name="studentid"  value="<?php echo  $info['studentid']  ?>">
+                                    <select class="form-select" name="studentid" aria-label="Default select example" style="background: #F5F5F5;">
+                                        <option selected disabled value="<?php echo  $info['studentid']  ?>"><?php foreach ($list_student1 as $list_student1) { echo $list_student1['name']; } ?></option>
+                                        <optgroup>
+                                            <?php
+                                            foreach ($list_student as $list_student) {
+                                                $id = $list_student['id'] ?? '';
+                                                $name = $list_student['name'] ?? '';
+                                            ?>
+                                                <option value="<?php echo $id ?>"><?php echo $name ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </optgroup>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -42,7 +55,7 @@
                                 <td><label for="">Ngày kết thúc:</label></td>
                             </tr>
                             <tr>
-                                <td><input type="date" name="startdate" value="<?php echo  $info['startdate']?>"></td>
+                                <td><input type="date" name="startdate" value="<?php echo  $info['startdate'] ?>"></td>
                                 <td><input type="date" name="finishdate" value="<?php echo  $info['finishdate'] ?>"></td>
                             </tr>
                             <tr>
@@ -66,17 +79,36 @@
                                 </td>
                                 <td class="giuong-option">
                                     <select class="form-select" id="bed" name="bedid" aria-label="Default select example" style="background: #F5F5F5;">
-                                    <option selected disabled><?php echo $info['bedid'] ?></option>
+                                        <option selected disabled><?php echo $info['bedid'] ?></option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td><label for="">Giá (Đồng):</label></td>
-                                <td><label for="">Trạng thái:</label></td>
+                                <td><label for="">Tiền đặt cọc:</label></td>
                             </tr>
                             <tr>
                                 <td><input type="number" name="cost" value="<?php echo $info['cost'] ?>"></td>
-                                <td><input type="text" name="status" value="<?php echo $info['status'] ?>"></td>
+                                <td><input type="text" name="codcost" value="<?php echo $info['codcost'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="">Trạng thái:</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-select" name="status" aria-label="Default select example" style="background: #F5F5F5;">
+                                        <option selected disabled><?php if ($info['status'] == 1) {
+                                                                        echo "Còn hạn";
+                                                                    } else {
+                                                                        echo "Hết hạn";
+                                                                    } ?></option>
+                                        <optgroup>
+                                            <option value="1">Còn hạn</option>
+                                            <option value="0">Hết hạn</option>
+                                        </optgroup>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2"><label for="">Ghi chú:</label></td>

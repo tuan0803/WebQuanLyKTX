@@ -29,10 +29,8 @@
                         <th>STT</th>
                         <th>ID</th>
                         <th>Tên Phòng</th>
-
                         <th>Số người hiện tại/tối đa</th>
                         <th colspan="3">Trạng thái</th>
-
                     </tr>
                     <tbody id="showroom">
                         <?php
