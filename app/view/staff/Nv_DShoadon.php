@@ -55,10 +55,10 @@
                             $cost = $list1['cost'] ?? '';
                             $description = $list1['description'] ?? '';
                             $status = "";
-                            if($list1['status'] =="1"){
-                                $status="Thanh toán đủ";
-                            }else{
-                                $status="Chưa thanh toán";
+                            if ($list1['status'] == "1") {
+                                $status = "Thanh toán đủ";
+                            } else {
+                                $status = "Chưa thanh toán";
                             }
                         ?>
                             <tr>
@@ -70,16 +70,57 @@
                                 <td><?php echo $room_name ?></td>
                                 <td><?php echo $servicebill_id ?></td>
                                 <td><?php echo $date ?></td>
-                                <td><?php echo $cost ?></td>
+                                <td><?php echo number_format($cost, 0) ?></td>
                                 <td><?php echo $description ?></td>
-                                <td><?php echo $list1['status'] ?></td>
-                                <td><a id='edit_link' href="javascript:void(0);" onclick="showEditContract('<?php echo $id ?>')"><i class='bx bx-edit'></i></a></td>
+                                <td><?php echo $status ?></td>
+                                <td><a id='edit_link' href="javascript:void(0);" onclick="showEditBill('<?php echo $id ?>')"><i class='bx bx-edit'></i></a></td>
                                 </td>
                                 <td> <a id='deleteLink' href="http://localhost/WEBQUANLYKTX/qlyhoadon/delete/?id=<?php echo $id ?>" onclick="deleteRoom('<?php echo $id ?>')">
                                         <i class='bx bx-trash' style="color: red;"></i>
                                     </a></td>
                             </tr>
+                            <form action="<?php echo _WEB_ROOT ?>/qlyhoadon/suabill" method="post">
+                                <div id="Edit-Bill-<?php echo $id ?>" class="modal" tabindex="-1" role="dialog" style="display: none; margin-top: %;">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Hóa đơn <?php echo $id ?></h5>
+                                                <button type="button" onclick="hidenEditBill('<?php echo $id ?>')" class="close" data-dismiss="modal" aria-label="Close" style="outline: none; background: red;">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" value="<?php echo $id ?>" id="id" name="id">
+                                                <input type="hidden" value="<?php echo $contractid ?>" id="contractid" name="contractid">
+                                                <input type="hidden" value="<?php echo $servicebill_id ?>" id="serviceid" name="serviceid">
+                                                <input type="hidden" value="<?php echo $date ?>" id="date" name="date">
+                                                <div class="mb-3">
+                                                    <label for="cost" class="form-label">Tổng tiền thanh toán</label>
+                                                    <input type="number" id="cost" name="cost" value="<?php echo $cost ?>" class="form-control">
+                                                </div>
+                                                <div class="form-check mb-3" style="gap: 1rem;">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        Thu đủ
+                                                    </label>
+                                                    <select class="form-control" id="status" name="status" >
+                                                        <option value="0"></option>
+                                                        <option value="1">Thanh toán đủ</option>
+                                                    </select>
+            
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Ghi chú</label>
+                                                    <textarea name="description" id="description" cols="10" rows="10" class="form-control"><?php echo $description ?></textarea>
+                                                </div>
 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary btnSave">Lưu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         <?php
                         }
                         ?>
@@ -96,18 +137,18 @@
         $("#search-input").keyup(function() {
             var id = $("#search-input").val();
             $.ajax({
-            url: "<?php echo _WEB_ROOT ?>/qlyhoadon/searchlastbill",
-            method: "POST",
-            data: {
-                id: id
-            },
-            success: function(data) {
-                $("#showlastbill").html(data);
-                console.log(data);
-            }
+                url: "<?php echo _WEB_ROOT ?>/qlyhoadon/searchlastbill",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $("#showlastbill").html(data);
+                    console.log(data);
+                }
 
-        })
-        console.log(id);
+            })
+            console.log(id);
         });
         $(".room").change(function() {
             var id = $(".room").val();
@@ -130,18 +171,43 @@
 
     }
 
-    // function hidenEditContract(contractId) {
-    //     $("[id^=Edit-contract-]").hide();
-    //     $("#Edit-contract-" + contractId).hide();
-    //     $("#overlay").hide();
-    // };
+    function hidenEditBill(id) {
+        $("[id^=Edit-Bill-]").hide();
+        $("#Edit-Bill-" + id).hide();
+        $("#overlay").hide();
+    };
 
-    // function showEditContract(contractId) {
-    //     $("[id^=Edit-contract-]").hide();
-    //     $("#Edit-contract-" + contractId).show();
-    //     console.log(contractId);
-    // };
-
+    function showEditBill(id) {
+        $("[id^=Edit-Bill-]").hide();
+        $("#Edit-Bill-" + id).show();
+        console.log(id);
+    };
+    $(".btnSave").on("click", function() {
+        var id = $("#id").val();
+        var serviceid = $("input[name='serviceid']").val();
+        var contractid = $("input[name='contractid']").val();
+        var date = $("#dateservice").val();
+        var cost = $("input[name='cost']").val();
+        var status =$("#status").val() ;
+        var description = $("#description").val();
+        $.ajax({
+            url: "<?php echo _WEB_ROOT ?>/qlyhoadon/suabill",
+            method: "POST",
+            data: {
+                id: id,
+                contractid: contractid,
+                serviceid: serviceid,
+                date: date,
+                cost: cost,
+                status: status,
+                description: description
+            },
+            success: function(response) {
+                $("#them").modal("hide");
+            }
+        });
+        console.log(contractid);
+    });
 </script>
 
 </html>

@@ -35,19 +35,19 @@
                                 </td>
                                 <td>
                                     <select name="studentid" id="" class="form-control" style="font-size: 20px; margin-top: -10px; padding: 5px; background: #F5F5F5;">
-                                      <option disabled selected>Chọn sinh viên</option>
+                                        <option disabled selected>Chọn sinh viên</option>
                                         <?php
-                                        foreach($list_student as $list_student){
-                                         $id=$list_student['id'];
-                                         $name=$list_student['name'];
-                                         ?>
-                                        
-                                        <option value="<?php echo $id ?>"><?php echo $name ?> </option>
+                                        foreach ($list_student as $list_student) {
+                                            $id = $list_student['id'];
+                                            $name = $list_student['name'];
+                                        ?>
+
+                                            <option value="<?php echo $id ?>"><?php echo $name ?> </option>
                                         <?php
                                         }
                                         ?>
                                     </select>
-                                    
+
                                 </td>
                             </tr>
                             <tr>
@@ -79,8 +79,8 @@
                                 </td>
                                 <td class="giuong-option">
                                     <select class="form-select" name="bedid" aria-label="Default select example" style="background: #F5F5F5;">
-                                        <option selected disabled>Chọn giường</option>    
-                                    <optgroup  id="bed">
+                                        <option selected disabled>Chọn giường</option>
+                                        <optgroup id="bed">
 
                                         </optgroup>
                                     </select>
@@ -88,9 +88,17 @@
                             </tr>
                             <tr>
                                 <td><label for="">Giá (Đồng):</label></td>
+                                <td><label for="">Tiền cọc (Đồng):</label></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cost"></td>
+                                <td>
+                                    <select class="form-select form-control" name="cost" aria-label="Default select example" style="background: #F5F5F5;">
+                                        <optgroup id="cost">
+
+                                        </optgroup>
+                                    </select>
+                                </td>
+                                <td><input type="number" name="codcost"></td>
                                 <td><input type="hidden" name="status" value="1"></td>
                             </tr>
                             <tr>
@@ -115,26 +123,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.search').keypress(function(event) {
-            if (event.which === 13) {
-                performSearch();
-            }
-        });
-    });
-
-    function performSearch() {
-        var searchText = $('.search').val();
-        $.post()
-    }
-    $(document).ready(function() {
         $(".room").change(function() {
             var id = $(".room").val();
             $.ajax({
-                url:"<?php echo _WEB_ROOT ?>/qlyhopdong/showBed",
-                method:"POST",
-                data:{ id:id},
-                success:function(data){
+                url: "<?php echo _WEB_ROOT ?>/qlyhopdong/showBed",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
                     $("#bed").html(data);
+                }
+            })
+            $.ajax({
+                url: "<?php echo _WEB_ROOT ?>/qlyhopdong/showCost",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $("#cost").html(data);
                 }
             })
             console.log(id);
