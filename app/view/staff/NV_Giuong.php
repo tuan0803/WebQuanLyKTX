@@ -16,29 +16,24 @@
     <form action="" method="post">
         <section class="main-course" id="content">
             <div class="header-container">
-
                 <h1>Giường</h1>
-
             </div>
             <div class="course-box">
                 <ul class="contract">
                     <!-- MAIN -->
                     <main>
-
                         <div class="table-data" style="display: flex;">
                             <div class="todo">
                                 <div class="head">
                                     <h3>Danh sách phòng</h3>
                                 </div>
                                 <div>
-
                                     <ul class="todo-list">
                                         <table class="table">
                                             <thead>
                                                 <th>STT</th>
                                                 <th>Mã phòng</th>
                                                 <th colspan="2">Tên Phòng</th>
-
                                             </thead>
                                             <?php
                                             $i = 1;
@@ -56,8 +51,7 @@
                                                     <td><?php echo $name ?></td>
                                                     <td><a id="bed_link" href="javascript:void(0);" onclick="showEditBed('<?php echo $id ?>')"><i class='bx bxs-bed'></i></a></td>
                                                 </tr>
-                                                <form method="post">
-
+                                                <form  action="<?php echo _WEB_ROOT ?>/qlygiuong/themgiuong" method="post">
                                                     <div id="Edit-bed-<?php echo $id ?>" class="modal" tabindex="-1" role="dialog" style="display: none; margin-top: 10%;">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -68,12 +62,10 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-
                                                                     <input type="hidden" value="<?php echo $id ?>" id="roomid" name="roomid">
                                                                     <div class="mb-3">
                                                                         <label for="nameBed" class="form-label">Mã giường
                                                                             <input type="text" id="idBed" name="bedid" class="form-control">
-
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <input type="hidden" id="status" name="status" value="0" class="form-control">
@@ -96,8 +88,6 @@
                             <div class="order">
                                 <div class="head">
                                     <h3>Danh sách giường</h3>
-
-
                                 </div>
                                 <table class="table">
                                     <thead>
@@ -141,15 +131,13 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <input type="hidden" value="<?php echo $bedroom ?>" name="roomid">
+                                                                <input type="hidden" class="roomid" value="<?php echo $bedroom ?>" name="roomid">
                                                                 <div class="mb-3">
-                                                                    <label for="nameBed" class="form-label">Mã giường
-
-                                                                        <input type="text" id="idBed" name="bedid" class="form-control" value="<?php echo $bedid ?>">
-
+                                                                    <label for="nameBed" class="form-label">Mã giường</label>
+                                                                        <input type="text" name="bedid" class="idBed form-control" value="<?php echo $bedid ?>">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <select name="status" class="form-control">
+                                                                    <select name="status" class="status form-control">
                                                                         <option selected disabled><?php echo $status ?></option>
                                                                         <option value="1">Có người</option>
                                                                         <option value="2">Trống</option>
@@ -157,7 +145,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button class="btn btn-primary">Lưu</button>
+                                                                <button class="btn btn-primary btnUpdate">Lưu</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,27 +185,27 @@
             })
         });
 
-        $(".btnSave").click(function() {
-            var id = $("#idBed").val();
-            var roomid = $("#roomid").val();
-            var status = $("#status").val();
-            $.ajax({
-                url: "<?php echo _WEB_ROOT ?>/qlygiuong/themgiuong",
-                method: "POST",
-                data: {
-                    id: id,
-                    roomid: roomid,
-                    status: status
-                },
-                success: function(response) {
-                    console.log(response);
-                }
-            });
-            console.log(id);
-            console.log(roomid);
-            console.log(status);
-        });
     });
+    $(".btnSave").on("click", function() {
+        var bedid = $("#idBed").val();
+        var roomid = $("#roomid").val();
+        var status = $("#status").val();
+        $.ajax({
+            url: "<?php echo _WEB_ROOT ?>/qlygiuong/themgiuong",
+            method: "POST",
+            data: {
+                bedid: bedid,
+                roomid: roomid,
+                status: status
+            },
+            success: function(response) {
+            }
+        });
+        console.log(id);
+        console.log(roomid);
+        console.log(status);
+    });
+    
 
     function hidenEditBed(Id) {
         $("[id^=Edit-bed-]").hide();
