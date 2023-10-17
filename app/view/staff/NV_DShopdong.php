@@ -6,10 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/WEBQUANLYKTX/public/assets/staff/css/index.css">
+    <style>
+        #exportButton {
+            position: absolute;
+            top: 100px;
+            left: 1100px;
+            
+        }
+    </style>
     <title>Hợp đồng</title>
 </head>
 
 <body>
+<form method="Post" action="<?php echo _WEB_ROOT?>/qlyhopdong/export"> 
+        <button type="submit" class="btn btn-outline-success" id="exportButton">Xuất excel</button>
+    </form>
     <form action="" method="post">
         <section class="main-course" id="content">
             <div class="header-container">

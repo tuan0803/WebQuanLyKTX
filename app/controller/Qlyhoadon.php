@@ -1,4 +1,7 @@
 <?php
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Qlyhoadon extends Controller
 {
     public $position;
@@ -455,6 +458,63 @@ class Qlyhoadon extends Controller
         $id = $_GET['id'];
         $this->model_home->deletebill($id);
         $this->listbill();
+    }
+    public function export()
+    {
+        $this->excel();
+        
+
+        $spreadsheet = new Spreadsheet();
+        $sheet       = $spreadsheet->getActiveSheet();
+        $data_export = $this->model_home->all();
+        //định dạng cột tiêu đề
+        $sheet->getColumnDimension('A')->setAutoSize(true);
+        $sheet->getColumnDimension('B')->setAutoSize(true);
+        $sheet->getColumnDimension('C')->setAutoSize(true);
+        $sheet->getColumnDimension('D')->setAutoSize(true);
+        $sheet->getColumnDimension('E')->setAutoSize(true);
+        $sheet->getColumnDimension('F')->setAutoSize(true);
+        $sheet->getColumnDimension('G')->setAutoSize(true);
+
+
+        // căn lề cácc tiêu đề trong các ô
+        $sheet->getStyle('A1:G1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        // Tạo tiêu đề
+        $sheet
+            ->setCellValue('A1', 'Mã hóa đơn')
+            ->setCellValue('B1', 'Mã hợp đồng')
+            ->setCellValue('C1', 'Mã dịch vụ')
+            ->setCellValue('D1', 'Ngày')
+            ->setCellValue('E1', 'Tiền')
+            ->setCellValue('F1', 'Ghi chú')
+            ->setCellValue('G1', 'Trạng thái');
+            
+
+
+        // Ghi dữ liệu
+        $rowCount = 2;
+        foreach ($data_export as $key => $value) {
+            $sheet->setCellValue('A' . $rowCount, $value['id']);
+            $sheet->setCellValue('B' . $rowCount, $value['contractid']);
+            $sheet->setCellValue('C' . $rowCount, $value['serviceid']);
+            $sheet->setCellValue('D' . $rowCount, $value['date']);
+            $sheet->setCellValue('E' . $rowCount, $value['cost']);
+            $sheet->setCellValue('F' . $rowCount, $value['description']);
+            $sheet->setCellValue('G' . $rowCount, $value['status']);
+            
+
+            //căn lề cho các văn bản trong các ô thuộc mỗi hàng
+            $sheet->getStyle('A' . $rowCount . ':G' . $rowCount)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+            $rowCount++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->setOffice2003Compatibility(true);
+        $filename = "Hoadon" . time() . ".xlsx";
+        $writer->save($filename);
+        // header("location:" . $filename);
+        $this->listbill();
+
     }
     public function test()
     {

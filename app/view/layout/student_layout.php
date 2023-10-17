@@ -33,7 +33,7 @@
                             <span>
                                 <a href>
                                     <i class='bx bx-grid-alt'></i>
-                                    <span>Trang chủ</span>
+                                    <a style="color:black;" href="<?php echo _WEB_ROOT ?>/trangchu"><span>Trang chủ</span></a>
                                 </a>
                             </span>
                         </div>

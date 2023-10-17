@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/WEBQUANLYKTX/public/assets/staff/css/index.css">
     <title>Hợp đồng</title>
+    <style>
+        #exportButton {
+            position: absolute;
+            top: 100px;
+            left: 1100px;
+            
+        }
+    </style>
 </head>
 
 <body>
+    <form method="Post" action="<?php echo _WEB_ROOT?>/qlyhoadon/export"> 
+        <button type="submit" class="btn btn-outline-success" id="exportButton">Xuất excel</button>
+    </form>
     <form action="" method="post">
         <section class="main-course" id="content">
             <div class="header-container">
                 <h3>Danh sách hóa đơn</h3>
+                
                 <div class="box-right">
                     <div class="box-search">
                         <i class='bx bx-search' id="search-icon"></i>

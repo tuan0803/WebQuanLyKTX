@@ -29,7 +29,7 @@
                         <div class="navbar-link">
                             <span>
                                 <i class='bx bx-grid-alt'></i>
-                                <span>Trang chủ</span>
+                                <a style="color:black;" href="<?php echo _WEB_ROOT ?>/trangchu"><span>Trang chủ</span></a>
                             </span>
                         </div>
                     </li>
@@ -270,6 +270,14 @@
                                         <a href="<?php echo _WEB_ROOT ?>/qlythongke/no">
                                             <i class="fa-solid fa-file-invoice-dollar"></i>
                                             <span>Doanh thu</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlythongke/thongkehopdong">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            <span>Hợp đồng</span>
                                         </a>
                                     </span>
                                 </li>

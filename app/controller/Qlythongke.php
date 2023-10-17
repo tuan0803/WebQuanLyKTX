@@ -94,8 +94,13 @@ class Qlythongke extends Controller
         WHERE startdate >= DATE_SUB(NOW(), INTERVAL 4 MONTH) 
         GROUP BY YEAR(startdate), MONTH(startdate) 
         ORDER BY YEAR(startdate), MONTH(startdate);";
+
+        $sql_tt             = "SELECT status, COUNT(*) AS Count
+        FROM contract
+        GROUP BY status;";
         $this->data['hdhh']    = $this->model_home->query($sql_hdhh);
         $this->data['hdm']    = $this->model_home->query($sql_hdm);
+        $this->data['tt']   = $this->model_home->query($sql_tt);
         
         $this->data['content'] = 'staff/tkhopdong';
 

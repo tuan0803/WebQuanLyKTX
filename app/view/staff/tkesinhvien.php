@@ -96,30 +96,25 @@
       var value_class = <?php echo json_encode($value_class); ?>;
 
       var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'Time of Day');
+      data.addColumn('string', 'Lớp học');
       data.addColumn('number', 'Số sinh viên');
 
       for (let index = 0; index < value_class.length; index++) {
         data.addRows([
-          [{ v: [index + 1, 0, 0], f: value_class[index][0] }, parseInt(value_class[index][2])],]);
+          [value_class[index][0] , parseInt(value_class[index][2])],]);
 
       }
 
 
       var options = {
-        title: 'Biểu đồ sinh viên phân bố theo lớp học',
-        hAxis: {
-          title: 'Lớp học',
-          format: 'h:mm a',
-          viewWindow: {
-            min: [0, 30, 0],
-            max: [value_class.length, 30, 0]
-          }
-        },
-        vAxis: {
-          title: 'Số lượng sinh viên'
-        }
-      };
+      title: 'Biểu đồ sinh viên phân bố theo lớp học',
+      hAxis: {
+        title: 'Lớp học',
+      },
+      vAxis: {
+        title: 'Số lượng sinh viên'
+      }
+    };
 
       var chart = new google.visualization.ColumnChart(
         document.getElementById('chartclass_div'));
@@ -161,7 +156,7 @@
         2]);
 
       var options = {
-        title: "Biều đồ số lượng hợp đồng sẽ hết hạn trong 4 tháng tiếp theo",
+        title: "Biều đồ thống kê sinh viên theo quê quán",
         width: 600,
         height: 400,
         bar: { groupWidth: "95%" },

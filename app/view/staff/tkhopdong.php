@@ -42,11 +42,11 @@
     $key_hdm[]   = array_keys($hdm1);
     $value_hdm[] = array_values($hdm1);
   }
-  //   foreach ($address as $address1) {
-//     $key_address[]   = array_keys($address1);
-//     $value_address[] = array_values($address1);
+    foreach ($tt as $tt1) {
+    $key_tt[]   = array_keys($tt1);
+    $value_tt[] = array_values($tt1);
   
-  //   }
+    }
   
 
   ?>
@@ -54,8 +54,9 @@
     <div class="box">
     <div id="hdshh_chart" style="width: 900px; height: 500px"></div>
     </div>
+    
     <div class="box">
-      <div id="chartclass_div" style="height: 500px"></div>
+      <div id="charttt_div" style="height: 500px"></div>
     </div>
     <div class="box">
       <div id="hdm_chart" style="width: 900px; height: 500px"></div>
@@ -70,7 +71,7 @@
 
     var key_hdm = <?php echo json_encode($key_hdm); ?>;
     var value_hdm = <?php echo json_encode($value_hdm); ?>;
-    alert(value_hdm[0]);
+    
     function drawChart() {
       
       var dataArray = [['String', 'Hợp đồng']];
@@ -171,14 +172,14 @@
 
 
       var options = {
-        title: 'Biểu đồ sinh viên phân bố theo lớp học',
+        title: 'Biểu đồ thống kê số lượng hợp đồng theo trạng thái',
         hAxis: {
           title: 'Lớp học',
           format: 'h:mm a',
-          viewWindow: {
-            min: [0, 30, 0],
-            max: [value_hdhh.length, 30, 0]
-          }
+          // viewWindow: {
+          //   min: [0, 30, 0],
+          //   max: [value_hdhh.length, 30, 0]
+          // }
         },
         vAxis: {
           title: 'Số lượng sinh viên'
@@ -198,22 +199,22 @@
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      var key_address = <?php echo json_encode($key_hdhh); ?>;
-      var value_address = <?php echo json_encode($value_hdhh); ?>;
+      var key_tt = <?php echo json_encode($key_tt); ?>;
+      var value_tt = <?php echo json_encode($value_tt); ?>;
       
       
 
 
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Element');
-      data.addColumn('number', 'Số sinh viên');
+      data.addColumn('number', 'Số hợp đồng');
       data.addColumn({ type: 'string', role: 'style' });
 
 
-      for (var i = 0; i < value_address.length; i++) {
-        $year = value_address[i][0]
+      for (var i = 0; i < value_tt.length; i++) {
+        $year = value_tt[i][0]
 
-        data.addRow([value_address[i][0] + "/" + value_address[i][2], parseInt(value_address[i][4]), "#b87333"]);
+        data.addRow([value_tt[i][0] , parseInt(value_tt[i][2]), "#b87333"]);
       }
 
 
@@ -228,13 +229,13 @@
         2]);
 
       var options = {
-        title: "Biều đồ sinh viên phan bố theo quê quán",
+        title: "Biều đồ hợp đồng theo trạng thái",
         width: 600,
         height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
       };
-      var chart = new google.visualization.BarChart(document.getElementById("chartaddress_div"));
+      var chart = new google.visualization.BarChart(document.getElementById("charttt_div"));
       chart.draw(view, options);
     }
   </script>
