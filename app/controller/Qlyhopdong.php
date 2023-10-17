@@ -16,17 +16,6 @@ class Qlyhopdong extends Controller
         $user    = $session->data('user');
         $this->position = $user["position"];
     }
-    public function timkiem(){
-        $request = new Request();
-        $update   = $request->getFields();
-        $id        = $update['id'];
-        $sql = "SELECT contract.*, student.name AS student_name FROM contract LEFT JOIN student on contract.studentid=student.id WHERE contract.id='$id'";
-        $this->data['list'] = $this->model_home->query($sql);
-        $sql_room = "SELECT room.id, room.name FROM room";
-        $this->data['list_room'] = $this->model_home->query($sql_room);
-        $this->data['content'] = 'staff/NV_DShopdong';
-        $this->render('layout/'.$this->position.'_layout', $this->data);
-    }
 
     public function index()
     {
@@ -43,9 +32,13 @@ class Qlyhopdong extends Controller
     public function showformsua($id = 1)
     {
         $sql_contract = $this->model_home->find($id);
+        $sql_student1 = "SELECT student.* FROM contract INNER JOIN student ON student.id=contract.studentid WHERE contract.id='$id'";
         $sql_room = "SELECT room.id as roomid, room.name as roomname FROM room";
+        $sql_student = "SELECT student.* FROM student";
         $this->data['content'] = 'staff/NV_EditContract';
         $this->data['info']  = $sql_contract;
+        $this->data['list_student'] = $this->model_home->query($sql_student);
+        $this->data['list_student1'] = $this->model_home->query($sql_student1);
         $this->data['list_room'] = $this->model_home->query($sql_room);
         $this->render('layout/staff_layout', $this->data);
     }
@@ -66,7 +59,7 @@ class Qlyhopdong extends Controller
     public function showformthem()
     {
         $sql_room = "SELECT room.id, room.name FROM room";
-        $sql_student="SELECT student.* FROM student";
+        $sql_student = "SELECT student.* FROM student";
         $this->data['list_student'] = $this->model_home->query($sql_student);
         $this->data['list_room'] = $this->model_home->query($sql_room);
         $this->data['content'] = 'staff/Nv_Addcontract';
@@ -84,6 +77,22 @@ class Qlyhopdong extends Controller
                 $output .= '
                 <option value=' . $rows["bedid"] . '> ' . $rows["bedid"] . '</option>
                 ';
+            }
+            echo $output;
+        }
+    }
+    public function showCost()
+    {
+        if (isset($_POST["id"])) {
+            $key = $_POST["id"];
+            $sql = "SELECT room.cost as roomcost FROM room WHERE room.id='$key'";
+            $result = $this->model_home->query($sql);
+            $output = '';
+            foreach ($result as $rows) {
+                $output .= "
+                <option value=" . $rows['roomcost'] . ">" . $rows['roomcost'] . "</option>
+              
+                ";
             }
             echo $output;
         }
@@ -245,15 +254,15 @@ class Qlyhopdong extends Controller
         $this->model_home->updateData('bed', $update2, $condition2);
         $this->movephong();
     }
-    public function updatebed(){
+    public function updatebed()
+    {
         if (isset($_POST["bedid"])) {
             $key = $_POST["bedid"];
             $idRoom = $_POST["idRoom"];
-            $status="0";
-            $sql="UPDATE bed SET status='$status', roomid='$idRoom' WHERE bedid ='$key'";
+            $status = "0";
+            $sql = "UPDATE bed SET status='$status', roomid='$idRoom' WHERE bedid ='$key'";
             $this->model_home->query($sql);
-        }   
-
+        }
     }
 
     //gia hạn hợp dồng
@@ -318,9 +327,9 @@ class Qlyhopdong extends Controller
                             <div class='modal-dialog' role='document'>
                                 <div class='modal-content'>
                                     <div class='modal-header'>
-                                        <h5 class='modal-title'>Gia hạn hợp đồng ". $id  ."</h5>
-                                        <input type='hidden' value='". $id ."' name='id'>
-                                        <button type='button' onclick='hidenEditcontractGH(". $id .")' class='close' data-dismiss='modal' aria-label='Close' style='outline: none; background: red;'>
+                                        <h5 class='modal-title'>Gia hạn hợp đồng " . $id  . "</h5>
+                                        <input type='hidden' value='" . $id . "' name='id'>
+                                        <button type='button' onclick='hidenEditcontractGH(" . $id . ")' class='close' data-dismiss='modal' aria-label='Close' style='outline: none; background: red;'>
                                             <span aria-hidden='true'>&times;</span>
                                         </button>
                                     </div>
@@ -330,12 +339,12 @@ class Qlyhopdong extends Controller
                                             <input type='date' id='finishdate' name='finishdate' class='form-control'>
                                         </div>
                                         <div class='mb-3'>
-                                            <input type='hidden' id='studentid' name='studentid' value='". $studentid ."'\class='form-control'>
-                                            <input type='hidden' id='startdate' name='startdate' value='". $startdate ."' class='form-control'>
-                                            <input type='hidden' id='description' name='description' value='". $description ."' class='form-control'>
-                                            <input type='hidden' id='roomid' name='roomid' value='". $roomid ."' class='form-control'>
-                                            <input type='hidden' id='bedid' name='bedid' value='". $bedid ."' class='form-control'>
-                                            <input type='hidden' id='cost' name='cost' value='". $cost ."' class='form-control'>
+                                            <input type='hidden' id='studentid' name='studentid' value='" . $studentid . "'\class='form-control'>
+                                            <input type='hidden' id='startdate' name='startdate' value='" . $startdate . "' class='form-control'>
+                                            <input type='hidden' id='description' name='description' value='" . $description . "' class='form-control'>
+                                            <input type='hidden' id='roomid' name='roomid' value='" . $roomid . "' class='form-control'>
+                                            <input type='hidden' id='bedid' name='bedid' value='" . $bedid . "' class='form-control'>
+                                            <input type='hidden' id='cost' name='cost' value='" . $cost . "' class='form-control'>
                                             <input type='hidden' id='status' name='status' value='1' class='form-control'>
                                         </div>
                                     </div>
@@ -351,5 +360,4 @@ class Qlyhopdong extends Controller
             echo $output;
         }
     }
-   
 }
