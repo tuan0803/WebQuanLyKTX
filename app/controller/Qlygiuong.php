@@ -6,11 +6,7 @@ class Qlygiuong extends Controller
 
     public function __construct()
     {
-// <<<<<<< HEAD
-//         $this->model_home = $this->model('Giuong');
-// =======
         $this->model_home = $this->model('NvGiuong');
-// >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
     }
 
     public function index()
@@ -20,11 +16,7 @@ class Qlygiuong extends Controller
     }
     public function listbed()
     {
-// <<<<<<< HEAD
-//         $sql_bed = "SELECT bed.id as bedid, bed.status as bedstatus, bed.roomid as bedroom
-// =======
         $sql_bed = "SELECT bed.bedid as bedid, bed.status as bedstatus, bed.roomid as bedroom
--- >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
         FROM bed";
         $sql_room = "SELECT room.id, room.name FROM room";
         $this->data['list_bed'] = $this->model_home->query($sql_bed);
@@ -36,15 +28,9 @@ class Qlygiuong extends Controller
     {
         $request = new Request();
         $update   = $request->getFields();
-// <<<<<<< HEAD
-//         $id        = $update['id'];
-//         unset($update['id']);
-//         $condition = "id='$id'";
-// =======
         $id        = $update['bedid'];
         unset($update['bedid']);
         $condition = "bedid='$id'";
-// >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
         $this->model_home->updateData('bed', $update, $condition);
         $this->data['content'] = 'staff/NV_NV_Giuong';
         $response = new Response();
@@ -56,20 +42,12 @@ class Qlygiuong extends Controller
     {
         if (isset($_POST["roomId"])) {
             $key = $_POST["roomId"];
-// <<<<<<< HEAD
-//             $sql = "SELECT bed.id as bedid, bed.status as bedstatus FROM bed WHERE bed.roomid='$key'";
-// =======
             $sql = "SELECT bed.bedid as bedid, bed.status as bedstatus, bed.roomid as roomid FROM bed WHERE bed.roomid='$key'";
-// >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
             $list_bed = $this->model_home->query($sql);
             $output = '';
             foreach ($list_bed as $list2) {
                 $bedid = $list2['bedid'];
-// <<<<<<< HEAD
-//                 $i = 1;
-// =======
                 $bedroom = $list2['roomid'];
-// >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
                 $status = "";
                 if ($list2['bedstatus'] == "1") {
                     $status = "Có người";
@@ -84,7 +62,6 @@ class Qlygiuong extends Controller
                     <td>
                     <p>" .  $status . "</p>
                     </td>
-
                     <td><a id='edit_link' href='javascript:void(0);' onclick='showFixbed(`$bedid`)'><i class='bx bx-edit'></i></a></td>
                     <td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlygiuong/delete/?id=$bedid'> <i class='bx bx-trash' style='color: red;'></i></a></td>
                 </tr>
@@ -119,7 +96,6 @@ class Qlygiuong extends Controller
                         </div>
                     </div>
                 </form>
-
                 ";
             }
 
@@ -129,21 +105,6 @@ class Qlygiuong extends Controller
 
     public function themgiuong()
     {
-// <<<<<<< HEAD
-//             $request = new Request();
-//             $data    = $request->getFields();
-//             $this->model_home->insertData('bed', $data);
-//             $this->data['content'] = 'staff/NV_Giuong';
-//             $response = new Response();
-//             $response->redirect("qlygiuong/listbed");
-        
-//     }
-//     public function delete()
-//     {
-//         $id = $_GET['id'];
-//         $this->model_home->deletebed($id);
-//         $this->listbed();
-// =======
         $request = new Request();
         $data    = $request->getFields();
         $this->model_home->insertData('bed', $data);
@@ -158,7 +119,6 @@ class Qlygiuong extends Controller
         $this->data['content'] = 'staff/NV_Giuong';
         $response = new Response();
         $response->redirect("qlygiuong/listbed");
-// >>>>>>> a183e349aee32bc77c6541cca7212146ebb9c9ab
     }
     public function test()
     {
