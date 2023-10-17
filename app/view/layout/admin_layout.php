@@ -53,10 +53,57 @@
                                         <a style="color:black;" href="<?php echo _WEB_ROOT ?>/qlynhanvien/showformthem"><span>Them Nhân Viên</span></a>
                                     </span>
                                 </li>
+                                
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-link">
+                            <span class="btn-dropdown">
+
+                                <a href="#">
+                                    <i class='bx bxs-school'></i>
+                                    <span>Báo cáo</span>
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                            </span>
+                            <ul>
                                 <li>
                                     <span class="title">
-                                        <i class='fa fa-search'></i>
-                                        <a style="color:black;" href="#"><span>Sửa Nhân Viên</span></a>
+                                        <a href="<?php echo _WEB_ROOT ?>/qlyreport/listreport_nv">
+                                            <i class='bx bx-search'></i>
+                                            <span style="font-size: 15px; font-weight: 700;">Danh
+                                                sách báo cáo</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-link">
+                            <span class="btn-dropdown">
+                                <i class='bx bxs-school'></i>
+                                <span>QL Tài Khoản</span>
+                                <i class='bx bx-chevron-down'></i>
+                            </span>
+                            <ul>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlytaikhoan/liststaff">
+                                            <i class='bx bx-search'></i>
+                                            <span style="font-size: 15px; font-weight: 700;">Danh
+                                                sách TK nhân viên</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="title">
+                                        <a href="<?php echo _WEB_ROOT ?>/qlytaikhoan/liststudent">
+                                            <i class='bx bxs-bed'></i>
+                                            <span>Danh sách TK sinh viên</span>
+                                        </a>
                                     </span>
                                 </li>
                             </ul>

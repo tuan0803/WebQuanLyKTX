@@ -130,14 +130,7 @@
                                         </a>
                                     </span>
                                 </li>
-                                <!-- <li>
-                                    <span class="title">
-                                        <a href="#">
-                                            <i class='bx bxs-bed'></i>
-                                            <span>Chuyển giường</span>
-                                        </a>
-                                    </span>
-                                </li> -->
+                                
                             </ul>
                         </div>
                     </li>
