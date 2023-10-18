@@ -140,7 +140,7 @@
                     </li>
                     <li>
                         <input type="hidden" name="description" value=" ">
-                        <input type="hidden" name="status" value="0">
+                        <input type="hidden" name="status" value="">
                     </li>
                     <li>
                         <div style="align-items: center; display: flex; justify-content: center; margin: 20px;">

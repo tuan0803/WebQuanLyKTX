@@ -116,7 +116,7 @@
                                                 <td>
                                                     <p><?php echo $status ?></p>
                                                 </td>
-                                                <td><a id='edit_link' href="javascript:void(0);" onclick="showFixbed('<?php echo  $bedid ?>')"><i class='bx bx-edit'></i></a></td>
+                                                <td><a id='edit_link' href="http://localhost/WEBQUANLYKTX/qlygiuong/showformedit/<?php echo $bedid ?>" ><i class='bx bx-edit'></i></a></td>
                                                 <td><a href="http://localhost/WEBQUANLYKTX/qlygiuong/delete/?id=<?php echo $bedid ?>"> <i class='bx bx-trash' style="color: red;"></i></a></td>
                                             </tr>
 

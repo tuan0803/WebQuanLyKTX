@@ -29,7 +29,9 @@
                         <th>STT</th>
                         <th>ID</th>
                         <th>Tên Phòng</th>
-                        <th>Số người hiện tại/tối đa</th>
+                        <th>Số người hiện tại</th>
+                        <th>Còn Trống</th>
+                        <th>Giá phòng</th>
                         <th colspan="3">Trạng thái</th>
                     </tr>
                     <tbody id="showroom">
@@ -40,20 +42,28 @@
                             $name = $list1['name'] ?? '';
                             $currentquantity = $list1['SoLuongGiuongStatus1'] ?? '';
                             $status = $list1['status'] ?? '';
+                            $cost = $list1['cost'] ?? '';
                             $maxquantity = $list1['SoLuongGiuongStatus0'] ?? '';
+                            $dot = "";
 
-
+                            if ($currentquantity > 0 && $maxquantity == 0) {
+                                $dot = "<i class='bx bxs-circle' style='color: red;'></i>";
+                            }elseif ($currentquantity == 0 && $maxquantity == 0){
+                                $dot = "";
+                            } elseif ($currentquantity >= $maxquantity) {
+                                $dot = "<i class='bx bxs-circle' style='color: yellow;'></i>";
+                            } elseif ($currentquantity < $maxquantity) {
+                                $dot = " <i class='bx bxs-circle' style='color: green;'></i>";
+                            }
                         ?>
                             <tr>
                                 <td><?php echo $i++ ?></td>
                                 <td><?php echo $id ?></td>
                                 <td><?php echo $name ?></td>
-                                <td><?php echo $currentquantity . "/" . $maxquantity ?></td>
-                                <td><?php if ($currentquantity == $maxquantity) {
-                                        echo "<i class='bx bxs-circle' style='color: red;'></i>";
-                                    } else {
-                                        echo " <i class='bx bxs-circle' style='color: green;'></i>";
-                                    } ?></td>
+                                <td><?php echo $currentquantity  ?></td>
+                                <td><?php echo $maxquantity ?></td>
+                                <td><?php echo $cost ?></td>
+                                <td><?php echo $dot ?></td>
                                 <td><a id='edit_link' href="javascript:void(0);" onclick="showEditRoom('<?php echo $id ?>')"><i class='bx bx-edit'></i></a></td>
                                 </td>
                                 <!-- <td><a id="bed_link" href="javascript:void(0);" onclick="showEditBed('<?php echo $id ?>')"><i class='bx bxs-bed'></i></a></td> -->
@@ -79,6 +89,9 @@
                                                     <input type="text" id="nameRoom" name="name" value="<?php echo $name ?>" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
+                                                    <label for="" class="form-label">Giá phòng</label>
+                                                    <input type="number" id="cost" name="cost" value="<?php echo $cost ?>" class="form-control">
+
                                                     <input type="hidden" id="maxquantity" name="maxquantity" value="<?php echo $maxquantity ?>" class="form-control">
                                                 </div>
                                             </div>
@@ -98,7 +111,7 @@
             <form action="<?php echo _WEB_ROOT ?>/qlyphong/themphong" method="post">
                 <div id="AddRoom" class="modal" tabindex="-1" role="dialog" style="display:none; margin-top: 10%;">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content"> 
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Thêm phòng</h5>
                                 <button type="button" onclick="hidenAddRoom()" class="close" data-dismiss="modal" aria-label="Close" style="outline: none; background: red;">
@@ -115,6 +128,8 @@
                                     <input type="text" id="nameRoom" name="name" class="form-control">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="" class="form-label">Giá phòng</label>
+                                    <input type="number" id="cost" name="cost" class="form-control">
                                     <input type="hidden" id="maxquantity" name="maxquantity" value="0" class="form-control">
                                     <input type="hidden" id="currentquantity" name="currentquantity" class="form-control" value="0">
                                     <input type="hidden" id="status" name="status" class="form-control" value="0">
