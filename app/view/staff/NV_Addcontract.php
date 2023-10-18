@@ -91,14 +91,7 @@
                                 <td><label for="">Tiền cọc (Đồng):</label></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <select class="form-select form-control" name="cost" aria-label="Default select example" style="background: #F5F5F5;">
-                                        <optgroup id="cost">
-
-                                        </optgroup>
-                                    </select>
-                                </td>
-                                <td><input type="number" name="codcost"></td>
+                                <td id="cost"><input type="number" name="codcost"></td>
                                 <td><input type="hidden" name="status" value="1"></td>
                             </tr>
                             <tr>
