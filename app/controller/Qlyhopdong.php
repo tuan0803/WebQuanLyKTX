@@ -1,7 +1,4 @@
 <?php
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Qlyhopdong extends Controller
 {
     public $position;
@@ -27,7 +24,13 @@ class Qlyhopdong extends Controller
     }
     public function listcontract()
     {
-        $sql = "SELECT contract.*, student.name AS student_name FROM contract LEFT JOIN student on contract.studentid=student.id GROUP BY contract.studentid";
+        $sql = "SELECT
+        contract.*,
+        student.name AS student_name,
+        room.name AS roomname
+    FROM contract
+    INNER JOIN student ON contract.studentid = student.id
+    LEFT JOIN room ON room.id = contract.roomid";
         $this->data['list'] = $this->model_home->query($sql);
         $this->data['content'] = 'staff/NV_DShopdong';
         $this->render('layout/' . $this->position . '_layout', $this->data);
@@ -93,8 +96,7 @@ class Qlyhopdong extends Controller
             $output = '';
             foreach ($result as $rows) {
                 $output .= "
-                <option value=" . $rows['roomcost'] . ">" . $rows['roomcost'] . "</option>
-              
+                <input type='number' name='cost' value=" . $rows['roomcost'] . "  disabled readonly>
                 ";
             }
             echo $output;
@@ -106,6 +108,20 @@ class Qlyhopdong extends Controller
         $data    = $request->getFields();
         unset($data['name']);
         $this->model_home->insertData('contract', $data);
+        $data1    = $request->getFields();
+        unset($data1['id']);
+        unset($data1['name']);
+        unset($data1['studentid']);
+        unset($data1['startdate']);
+        unset($data1['finishdate']);
+        unset($data1['cost']);
+        unset($data1['codcost']);
+        unset($data1['status']);
+        unset($data1['description']);
+        unset($data1['bedid']);
+        $bedid = $data1['bedid'];
+        $condition = "bedid='$bedid'";
+        $this->model_home->updateData('contract', $data1, $condition);
         $this->data['content'] = 'staff/NV_DShopdong';
         $response = new Response();
         $response->redirect("qlyhopdong/listcontract");
@@ -262,7 +278,7 @@ class Qlyhopdong extends Controller
         if (isset($_POST["bedid"])) {
             $key = $_POST["bedid"];
             $idRoom = $_POST["idRoom"];
-            $status = "0";
+            $status = $_POST["status"];
             $sql = "UPDATE bed SET status='$status', roomid='$idRoom' WHERE bedid ='$key'";
             $this->model_home->query($sql);
         }
@@ -271,7 +287,13 @@ class Qlyhopdong extends Controller
     //gia hạn hợp dồng
     public function giahancontract()
     {
-        $sql = "SELECT contract.*, student.name AS student_name FROM contract LEFT JOIN student on contract.studentid=student.id GROUP BY contract.studentid";
+        $sql = "SELECT contract.*,
+        contract.id as contractid,
+        student.id AS studentid,
+        student.name AS student_name
+        FROM student
+        LEFT JOIN contract on contract.studentid=student.id
+        INNER JOIN room on contract.roomid=room.id";
         $this->data['list'] = $this->model_home->query($sql);
         $this->data['content'] = 'staff/NV_giaHanHD';
         $this->render('layout/' . $this->position . '_layout', $this->data);
@@ -362,69 +384,5 @@ class Qlyhopdong extends Controller
             }
             echo $output;
         }
-    }
-    public function export()
-    {
-        $this->excel();
-        
-
-        $spreadsheet = new Spreadsheet();
-        $sheet       = $spreadsheet->getActiveSheet();
-        $data_export = $this->model_home->all();
-        //định dạng cột tiêu đề
-        $sheet->getColumnDimension('A')->setAutoSize(true);
-        $sheet->getColumnDimension('B')->setAutoSize(true);
-        $sheet->getColumnDimension('C')->setAutoSize(true);
-        $sheet->getColumnDimension('D')->setAutoSize(true);
-        $sheet->getColumnDimension('E')->setAutoSize(true);
-        $sheet->getColumnDimension('F')->setAutoSize(true);
-        $sheet->getColumnDimension('G')->setAutoSize(true);
-        $sheet->getColumnDimension('H')->setAutoSize(true);
-        $sheet->getColumnDimension('I')->setAutoSize(true);
-        $sheet->getColumnDimension('J')->setAutoSize(true);
-
-
-        // căn lề cácc tiêu đề trong các ô
-        $sheet->getStyle('A1:H1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        // Tạo tiêu đề
-        $sheet
-            ->setCellValue('A1', 'Mã hợp đồng')
-            ->setCellValue('B1', 'Mã sinh viên')
-            ->setCellValue('C1', 'Ngày bắt đầu')
-            ->setCellValue('D1', 'Ngày kết thúc')
-            ->setCellValue('E1', 'Trang thái')
-            ->setCellValue('F1', 'Ghi chú')
-            ->setCellValue('G1', 'Mã phòng')
-            ->setCellValue('H1', 'Mã giường')
-            ->setCellValue('I1', 'Tiền phòng')
-            ->setCellValue('J1', 'Tiền cọc');
-
-
-        // Ghi dữ liệu
-        $rowCount = 2;
-        foreach ($data_export as $key => $value) {
-            $sheet->setCellValue('A' . $rowCount, $value['id']);
-            $sheet->setCellValue('B' . $rowCount, $value['studentid']);
-            $sheet->setCellValue('C' . $rowCount, $value['startdate']);
-            $sheet->setCellValue('D' . $rowCount, $value['finishdate']);
-            $sheet->setCellValue('E' . $rowCount, $value['status']);
-            $sheet->setCellValue('F' . $rowCount, $value['description']);
-            $sheet->setCellValue('G' . $rowCount, $value['roomid']);
-            $sheet->setCellValue('H' . $rowCount, $value['bedid']);
-            $sheet->setCellValue('I' . $rowCount, $value['cost']);
-            $sheet->setCellValue('J' . $rowCount, $value['codcost']);
-
-            //căn lề cho các văn bản trong các ô thuộc mỗi hàng
-            $sheet->getStyle('A' . $rowCount . ':J' . $rowCount)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-            $rowCount++;
-        }
-
-        $writer = new Xlsx($spreadsheet);
-        $writer->setOffice2003Compatibility(true);
-        $filename = "Hopdong" . time() . ".xlsx";
-        $writer->save($filename);
-        // header("location:" . $filename);
-        $this->listcontract();
-
     }
 }

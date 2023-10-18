@@ -24,6 +24,13 @@ class Qlygiuong extends Controller
         $this->data['content'] = 'staff/NV_Giuong';
         $this->render('layout/staff_layout', $this->data);
     }
+    public function showformedit($id = 1)
+    {
+        $detail = $this->model_home->find($id);
+        $this->data['content'] = 'staff/NV_EditGiuong';
+        $this->data['info']  = $detail;
+        $this->render('layout/staff_layout', $this->data);
+    }
     public function suagiuong()
     {
         $request = new Request();
@@ -62,40 +69,9 @@ class Qlygiuong extends Controller
                     <td>
                     <p>" .  $status . "</p>
                     </td>
-                    <td><a id='edit_link' href='javascript:void(0);' onclick='showFixbed(`$bedid`)'><i class='bx bx-edit'></i></a></td>
+                    <td><a id='edit_link' href='http://localhost/WEBQUANLYKTX/qlygiuong/showformedit/$bedid' ><i class='bx bx-edit'></i></a></td>
                     <td><a id='deleteLink' href='http://localhost/WEBQUANLYKTX/qlygiuong/delete/?id=$bedid'> <i class='bx bx-trash' style='color: red;'></i></a></td>
                 </tr>
-                <form action='http://localhost/WEBQUANLYKTX/qlygiuong/suagiuong' method='post'>
-                    <div id= 'Fix-bed-$bedid ' class='modal' tabindex='-1' role='dialog' style='display: none; margin-top: 10%;'>
-                        <div class='modal-dialog' role='document'>
-                            <div class='modal-content'>
-                                <div class='modal-header'>
-                                    <h5 class='modal-title'>Sửa thông tin giường " . $bedid . "</h5>
-                                    <button type='button' onclick='hidenFixbed(" . $bedid . ")' class='close' data-dismiss='modal' aria-label='Close' style='outline: none; background: red;'>
-                                        <span aria-hidden='true'>&times;</span>
-                                    </button>
-                                </div>
-                                <div class='modal-body'>
-                                    <input type='hidden' id='roomid' value=" . $bedroom . " name='roomid'>
-                                    <div class='mb-3'>
-                                        <label for='nameBed' class='form-label'>Mã giường
-                                            <input type='text' id='idBed' name='id' class='form-control' value=" . $bedid . ">
-                                    </div>
-                                    <div class='mb-3'>
-                                        <select name='status' class='form-control'>
-                                            <option selected disabled>" . $status . "</option>
-                                            <option value='1'>Có người</option>
-                                            <option value='2'>Trống</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class='modal-footer'>
-                                    <a class='btn btn-primary'>Lưu</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
                 ";
             }
 
